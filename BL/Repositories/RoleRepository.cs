@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace BL.Repositories
 {
-    class RoleRepository
+    public class RoleRepository
     {
         ApplicationRoleManager manager;
         public RoleRepository(DbContext db)

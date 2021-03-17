@@ -18,7 +18,7 @@ namespace BL.Repositories
             this._DbContext = DbContext;
         }
 
-        public List<Order> GetAllOrder()
+        public List<Order> GetAllOrders()
         {
             return GetAll().ToList();
         }
