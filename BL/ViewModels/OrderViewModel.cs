@@ -11,7 +11,7 @@ namespace BL.ViewModels
     class OrderViewModel
     {
         //public int ID { get; set; }
-        [Required]
+        //[Required]
         //public List<Ticket> tickets;
         //public DateTime date { get; set; }
         //public int totalPrice { get; set; }
