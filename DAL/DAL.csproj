@@ -100,13 +100,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Enum_Age.cs" />
+    <Compile Include="Enums\Enum_Age.cs" />
     <Compile Include="ApplicationDBContext.cs" />
-    <Compile Include="ApplicationIdentityUser.cs" />
-    <Compile Include="ApplicationUserManager.cs" />
-    <Compile Include="ApplicationUserStore.cs" />
-    <Compile Include="ApplicationRoleManager.cs" />
-    <Compile Include="Enum_Category.cs" />
+    <Compile Include="User\ApplicationIdentityUser.cs" />
+    <Compile Include="User\ApplicationUserManager.cs" />
+    <Compile Include="User\ApplicationUserStore.cs" />
+    <Compile Include="Role\ApplicationRoleManager.cs" />
+    <Compile Include="Enums\Enum_Category.cs" />
     <Compile Include="Event.cs" />
     <Compile Include="Location.cs" />
     <Compile Include="Migrations\202103161738114_initial.cs" />
@@ -117,7 +117,7 @@
     <Compile Include="Order.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Ticket.cs" />
-    <Compile Include="Enum_TicketClass.cs" />
+    <Compile Include="Enums\Enum_TicketClass.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -128,5 +128,6 @@
       <DependentUpon>202103161738114_initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
