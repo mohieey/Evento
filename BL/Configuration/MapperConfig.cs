@@ -22,7 +22,7 @@ namespace BL.Configuration
                     
                     
                     //map all view models with their respectful models
-                    //cfg.CreateMap<Order, OrderViewModel>().ReverseMap();
+                    c.CreateMap<Order, OrderViewModel>().ReverseMap();
 
                 });
             Mapper = config.CreateMapper();

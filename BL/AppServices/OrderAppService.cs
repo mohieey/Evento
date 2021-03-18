@@ -1,4 +1,5 @@
 ﻿using BL.Bases;
+using BL.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,19 +8,23 @@ using System.Threading.Tasks;
 
 namespace BL.AppServices
 {
-    class OrderAppService : BaseAppService
+    public class OrderAppService : BaseAppService
     {
-        //public List<OrderViewModel> GetAllOrder()
+        public List<OrderViewModel> GetAllOrder()
+        {
+            return Mapper.Map<List<OrderViewModel>>(TheUnitOfWork.Order.GetAllOrders());
+        }
+
+        public OrderViewModel GetOrderById(int id)
+        {
+            return Mapper.Map<OrderViewModel>(TheUnitOfWork.Order.GetOrderById(id));
+        }
+
+        //public List<OrderViewModel> GetOrdersByClientId(string id)
         //{
-
-        //    return Mapper.Map<List<OrderViewModel>>(TheUnitOfWork.Order.GetAllOrder());
+        //    TheUnitOfWork.Order.
+        //    return Mapper.Map<OrderViewModel>(TheUnitOfWork.Order.GetOrdersByClientId(id));
         //}
-        //public OrderViewModel GetOrder(int id)
-        //{
-        //    return Mapper.Map<OrderViewModel>(TheUnitOfWork.Order.GetOrderById(id));
-        //}
-
-
 
         //public bool SaveNewOrder(OrderViewModel orderViewModel)
         //{
@@ -33,17 +38,7 @@ namespace BL.AppServices
         //}
 
 
-        //public bool UpdateOrder(OrderViewModel orderViewModel)
-        //{
-        //    var order = Mapper.Map<Order>(orderViewModel);
-        //    TheUnitOfWork.Order.Update(order);
-        //    TheUnitOfWork.Commit();
-
-        //    return true;
-        //}
-
-
-        //public bool DeleteOrder(int id)
+        //public bool CheckOutOrder(int id)
         //{
         //    bool result = false;
 
@@ -53,10 +48,7 @@ namespace BL.AppServices
         //    return result;
         //}
 
-        //public bool CheckOrderExists(OrderViewModel orderViewModel)
-        //{
-        //    Order order = Mapper.Map<Order>(orderViewModel);
-        //    return TheUnitOfWork.Order.CheckOrderExists(order);
-        //}
+        //GetOrderPice
+        //GetNumberOfTicketsInOrder
     }
 }

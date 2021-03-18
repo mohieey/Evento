@@ -7,9 +7,8 @@ using System.Threading.Tasks;
 
 namespace BL.ViewModels
 {
-    class LoginViewModel
+    public class LoginViewModel
     {
-        public int Id { get; set; }
         [Required]
         public string UserName { get; set; }
 
