@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DAL;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BL.ViewModels
 {
-    class RegisterViewModel
+    public class RegisterViewModel
     {
         [Required]
         [Display(Name = "User Name")]
@@ -27,6 +28,9 @@ namespace BL.ViewModels
         [Display(Name = "Repeat Password")]
         [DataType(DataType.Password)]
         public string ConfirmPassword { get; set; }
+
+        [Required]
+        public Enum_Age age { get; set; }
 
         [Required]
         public string SSN { get; set; }

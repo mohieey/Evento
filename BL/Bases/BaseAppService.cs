@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace BL.Bases
 {
-    class BaseAppService : IDisposable
+    public class BaseAppService : IDisposable
     {
         protected IUnitOfWork TheUnitOfWork { get; set; }
         protected readonly IMapper Mapper = MapperConfig.Mapper;

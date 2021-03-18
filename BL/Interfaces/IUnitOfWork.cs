@@ -11,6 +11,9 @@ namespace BL.Interfaces
     {
         AccountRepository Account { get; }
         RoleRepository Role { get; }
+        OrderRepository Order { get; }
+        EventRepository Event { get; }
+        TicketRepository Ticket { get; }
 
 
         int Commit();

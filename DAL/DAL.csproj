@@ -102,6 +102,14 @@
   <ItemGroup>
     <Compile Include="Enums\Enum_Age.cs" />
     <Compile Include="ApplicationDBContext.cs" />
+    <Compile Include="Migrations\202103182315392_init.cs" />
+    <Compile Include="Migrations\202103182315392_init.Designer.cs">
+      <DependentUpon>202103182315392_init.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103182323087_init1.cs" />
+    <Compile Include="Migrations\202103182323087_init1.Designer.cs">
+      <DependentUpon>202103182323087_init1.cs</DependentUpon>
+    </Compile>
     <Compile Include="User\ApplicationIdentityUser.cs" />
     <Compile Include="User\ApplicationUserManager.cs" />
     <Compile Include="User\ApplicationUserStore.cs" />
@@ -126,6 +134,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202103161738114_initial.resx">
       <DependentUpon>202103161738114_initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103182315392_init.resx">
+      <DependentUpon>202103182315392_init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103182323087_init1.resx">
+      <DependentUpon>202103182323087_init1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

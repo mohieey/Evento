@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace BL.AppServices
 {
-    class AccountAppService : BaseAppService
+    public class AccountAppService : BaseAppService
     {
         public ApplicationIdentityUser Find(string name, string password)
         {

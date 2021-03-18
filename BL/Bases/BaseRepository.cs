@@ -75,10 +75,10 @@ namespace BL.Bases
             return DbSet.Find(id);
         }
 
-        //public virtual T GetById(string id)
-        //{
-        //    return DbSet.Find(id);
-        //}
+        public virtual T GetById(string id)
+        {
+            return DbSet.Find(id);
+        }
 
         public virtual T Insert(T entity)
         {

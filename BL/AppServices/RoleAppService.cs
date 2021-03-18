@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BL.AppServices
 {
-    class RoleAppService : BaseAppService
+    public class RoleAppService : BaseAppService
     {
         public IdentityResult Create(string rolename)
         {
