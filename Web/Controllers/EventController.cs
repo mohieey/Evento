@@ -31,13 +31,11 @@ namespace Web.Controllers
         {
             AccountAppService accountAppService = new AccountAppService();
             ApplicationIdentityUser user = accountAppService.GetUserById(User.Identity.GetUserId());
-            var host = Mapper.Map<HostUser>(user);
 
             if (ModelState.IsValid == false)
                 return View(newEvent);
 
-            
-            eventAppService.SaveNewEvent(newEvent);
+            eventAppService.SaveNewEvent(newEvent, user);
             return RedirectToAction("Index");
         }
     }

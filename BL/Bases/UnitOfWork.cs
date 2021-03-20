@@ -84,5 +84,27 @@ namespace BL.Bases
                 return @event;
             }
         }
+
+        private HostAccountRepository host;
+        public HostAccountRepository Host
+        {
+            get
+            {
+                if (host == null)
+                    host = new HostAccountRepository(DbContext);
+                return host;
+            }
+        }
+
+        private ClientAccountRepository client;
+        public ClientAccountRepository Client
+        {
+            get
+            {
+                if (client == null)
+                    client = new ClientAccountRepository(DbContext);
+                return client;
+            }
+        }
     }
 }

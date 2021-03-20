@@ -145,5 +145,7 @@ namespace BL.Bases
             if (entity == null) return;
             Delete(entity);
         }
+
+
     }
 }

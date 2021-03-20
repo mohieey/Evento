@@ -29,12 +29,12 @@ namespace Web.Controllers
 
         [HttpPost]
         public ActionResult Register(RegisterViewModel newUser, bool isHost = false)
-        {
+            {
             if (!ModelState.IsValid)
             {
                 return View(newUser);
             }
-            IdentityResult result = accountAppService.Register(newUser);
+            IdentityResult result = accountAppService.Register(newUser, isHost, User.IsInRole("Admin"));
             if (result.Succeeded)
             {
                 IAuthenticationManager owinMAnager = HttpContext.GetOwinContext().Authentication;

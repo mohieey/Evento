@@ -1,6 +1,7 @@
 ﻿using BL.Bases;
 using BL.ViewModels;
 using DAL;
+using DAL.User;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,11 +22,11 @@ namespace BL.AppServices
             return Mapper.Map<EventViewModel>(TheUnitOfWork.Event.GetEventById(id));
         }
 
-        public EventViewModel CreateEvent(EventViewModel eventViewModel)
-        {
-            Event newEvent = Mapper.Map<Event>(eventViewModel);
-            return Mapper.Map<EventViewModel>(TheUnitOfWork.Event.InsertEvent(newEvent));
-        }
+        //public EventViewModel CreateEvent(EventViewModel eventViewModel)
+        //{
+        //    Event newEvent = Mapper.Map<Event>(eventViewModel);
+        //    return Mapper.Map<EventViewModel>(TheUnitOfWork.Event.InsertEvent(newEvent));
+        //}
 
         //public List<OrderViewModel> GetOrdersByClientId(string id)
         //{
@@ -33,12 +34,12 @@ namespace BL.AppServices
         //    return Mapper.Map<OrderViewModel>(TheUnitOfWork.Order.GetOrdersByClientId(id));
         //}
 
-        public bool SaveNewEvent(EventViewModel eventViewModel)
+        public bool SaveNewEvent(EventViewModel eventViewModel, ApplicationIdentityUser user)
         {
             bool result = false;
             var @event = Mapper.Map<Event>(eventViewModel);
+            @event.Host = Mapper.Map<HostUser>(user);
 
-           
             TheUnitOfWork.Event.InsertEvent(@event);
             result = TheUnitOfWork.Commit() > new int();
 
