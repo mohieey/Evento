@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace BL.AppServices
 {
-    class EventAppService : BaseAppService
+    public class EventAppService : BaseAppService
     {
         public List<EventViewModel> GetAllEvents()
         {
@@ -33,16 +33,17 @@ namespace BL.AppServices
         //    return Mapper.Map<OrderViewModel>(TheUnitOfWork.Order.GetOrdersByClientId(id));
         //}
 
-        //public bool SaveNewOrder(OrderViewModel orderViewModel)
-        //{
-        //    bool result = false;
-        //    var order = Mapper.Map<Order>(orderViewModel);
-        //    if (TheUnitOfWork.Order.Insert(order))
-        //    {
-        //        result = TheUnitOfWork.Commit() > new int();
-        //    }
-        //    return result;
-        //}
+        public bool SaveNewEvent(EventViewModel eventViewModel)
+        {
+            bool result = false;
+            var @event = Mapper.Map<Event>(eventViewModel);
+
+           
+            TheUnitOfWork.Event.InsertEvent(@event);
+            result = TheUnitOfWork.Commit() > new int();
+
+            return result;
+        }
 
 
         //public bool CheckOutOrder(int id)

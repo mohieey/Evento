@@ -126,13 +126,29 @@
     <Compile Include="Migrations\202103191642465_addedNameToEvent.Designer.cs">
       <DependentUpon>202103191642465_addedNameToEvent.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202103201556000_removedLocation.cs" />
+    <Compile Include="Migrations\202103201556000_removedLocation.Designer.cs">
+      <DependentUpon>202103201556000_removedLocation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103201626499_changedEvent.cs" />
+    <Compile Include="Migrations\202103201626499_changedEvent.Designer.cs">
+      <DependentUpon>202103201626499_changedEvent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103201650542_resetevent.cs" />
+    <Compile Include="Migrations\202103201650542_resetevent.Designer.cs">
+      <DependentUpon>202103201650542_resetevent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103201850317_AddedHostClient.cs" />
+    <Compile Include="Migrations\202103201850317_AddedHostClient.Designer.cs">
+      <DependentUpon>202103201850317_AddedHostClient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ShoppingCart.cs" />
     <Compile Include="User\ApplicationIdentityUser.cs" />
     <Compile Include="User\ApplicationUserManager.cs" />
     <Compile Include="User\ApplicationUserStore.cs" />
     <Compile Include="Role\ApplicationRoleManager.cs" />
     <Compile Include="Enums\Enum_Category.cs" />
     <Compile Include="Event.cs" />
-    <Compile Include="Location.cs" />
     <Compile Include="Migrations\202103161738114_initial.cs" />
     <Compile Include="Migrations\202103161738114_initial.Designer.cs">
       <DependentUpon>202103161738114_initial.cs</DependentUpon>
@@ -142,6 +158,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Ticket.cs" />
     <Compile Include="Enums\Enum_TicketClass.cs" />
+    <Compile Include="User\ClientUser.cs" />
+    <Compile Include="User\HostUser.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -168,6 +186,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202103191642465_addedNameToEvent.resx">
       <DependentUpon>202103191642465_addedNameToEvent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103201556000_removedLocation.resx">
+      <DependentUpon>202103201556000_removedLocation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103201626499_changedEvent.resx">
+      <DependentUpon>202103201626499_changedEvent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103201650542_resetevent.resx">
+      <DependentUpon>202103201650542_resetevent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103201850317_AddedHostClient.resx">
+      <DependentUpon>202103201850317_AddedHostClient.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

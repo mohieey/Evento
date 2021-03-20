@@ -16,7 +16,7 @@ namespace BL.Bases
 
         public UnitOfWork()
         {
-            DbContext = new ApplicationDBContext();
+            DbContext = ApplicationDBContext.applicationDBContext;
             DbContext.Configuration.LazyLoadingEnabled = false;
         }
 

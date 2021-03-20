@@ -1,4 +1,10 @@
-﻿using System;
+﻿using AutoMapper;
+using BL.AppServices;
+using BL.ViewModels;
+using DAL;
+using DAL.User;
+using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,6 +14,8 @@ namespace Web.Controllers
 {
     public class EventController : Controller
     {
+        EventAppService eventAppService = new EventAppService();
+        
         // GET: Event
         public ActionResult Index()
         {
@@ -17,10 +25,20 @@ namespace Web.Controllers
         [Authorize(Roles = "Host")]
         public ActionResult CreateEvent() => View();
 
-        //[HttpPost]
-        //public ActionResult CreateEvent()
-        //{
+        [HttpPost]
+        [Authorize(Roles = "Host")]
+        public ActionResult CreateEvent(EventViewModel newEvent)
+        {
+            AccountAppService accountAppService = new AccountAppService();
+            ApplicationIdentityUser user = accountAppService.GetUserById(User.Identity.GetUserId());
+            var host = Mapper.Map<HostUser>(user);
 
-        //}
+            if (ModelState.IsValid == false)
+                return View(newEvent);
+
+            
+            eventAppService.SaveNewEvent(newEvent);
+            return RedirectToAction("Index");
+        }
     }
 }

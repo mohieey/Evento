@@ -28,5 +28,11 @@ namespace BL.AppServices
         {
             return TheUnitOfWork.Account.AssignToRole(userid, rolename);
         }
+
+
+       public ApplicationIdentityUser GetUserById(string id)
+        {
+            return TheUnitOfWork.Account.GetUserById(id);
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DAL.User;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -16,8 +17,10 @@ namespace DAL
         public int TotalAvailableTickets { get; set; }
         public bool isCanceled { get; set; } = false;
 
-        public virtual ApplicationIdentityUser User { get; set; }
-        public virtual Location location { get; set; }
+        
+        public virtual HostUser Host { get; set; }
+
+        public virtual string location { get; set; }
         public virtual List<Ticket> tickets { get; set; }
     }
 }

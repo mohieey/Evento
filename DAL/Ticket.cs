@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using DAL.User;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DAL
 {
@@ -14,6 +15,6 @@ namespace DAL
         //[ForeignKey("OrderID")]
         //public Order order { get; set; }
         public virtual Event @event { get; set; }
-        public virtual ApplicationIdentityUser owner { get; set; } = null;
+        public virtual ClientUser Client { get; set; } = null;
     }
 }

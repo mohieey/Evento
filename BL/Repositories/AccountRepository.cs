@@ -36,5 +36,11 @@ namespace BL.Repositories
             IdentityResult result = manager.AddToRole(userid, rolename);
             return result;
         }
+
+
+        public ApplicationIdentityUser GetUserById(string id)
+        {
+            return manager.FindById(id);
+        }
     }
 }
