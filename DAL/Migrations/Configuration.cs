@@ -1,5 +1,7 @@
 namespace DAL.Migrations
 {
+    using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity.EntityFramework;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
@@ -26,6 +28,25 @@ namespace DAL.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
+
+            //ApplicationRoleManager roleManager = new ApplicationRoleManager(context);
+            //roleManager.Create(new IdentityRole("Admin"));
+            //roleManager.Create(new IdentityRole("User"));
+            //roleManager.Create(new IdentityRole("Host"));
+
+            //ApplicationIdentityUser user =
+            //    new ApplicationIdentityUser()
+            //    {
+            //        UserName = "Ahmed",
+            //        PasswordHash = "aaaaa",
+            //    };
+            //ApplicationUserManager manager = new ApplicationUserManager(context);
+
+            //user.PasswordHash = manager.PasswordHasher.HashPassword(user.PasswordHash);
+
+            //manager.Create(user);
+
+            //manager.AddToRole(user.Id, "Host");
         }
     }
 }

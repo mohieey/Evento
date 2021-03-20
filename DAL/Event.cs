@@ -8,6 +8,7 @@ namespace DAL
     public class Event
     {
         public int ID { get; set; }
+        public string Name { get; set; }
         public DateTime date { get; set; }
         public Enum_Age age { get; set; }
         public string description { get; set; }
@@ -15,6 +16,7 @@ namespace DAL
         public int TotalAvailableTickets { get; set; }
         public bool isCanceled { get; set; } = false;
 
+        public virtual ApplicationIdentityUser User { get; set; }
         public virtual Location location { get; set; }
         public virtual List<Ticket> tickets { get; set; }
     }
