@@ -3,7 +3,6 @@ using System.ComponentModel.DataAnnotations;
 
 namespace DAL
 {
-    [Flags]
     public enum Enum_Age
     {
         Under16,
