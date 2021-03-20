@@ -110,6 +110,22 @@
     <Compile Include="Migrations\202103182323087_init1.Designer.cs">
       <DependentUpon>202103182323087_init1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202103191330007_addingHost.cs" />
+    <Compile Include="Migrations\202103191330007_addingHost.Designer.cs">
+      <DependentUpon>202103191330007_addingHost.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103191401167_removingHost.cs" />
+    <Compile Include="Migrations\202103191401167_removingHost.Designer.cs">
+      <DependentUpon>202103191401167_removingHost.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103191402553_addingUserInEvent.cs" />
+    <Compile Include="Migrations\202103191402553_addingUserInEvent.Designer.cs">
+      <DependentUpon>202103191402553_addingUserInEvent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103191642465_addedNameToEvent.cs" />
+    <Compile Include="Migrations\202103191642465_addedNameToEvent.Designer.cs">
+      <DependentUpon>202103191642465_addedNameToEvent.cs</DependentUpon>
+    </Compile>
     <Compile Include="User\ApplicationIdentityUser.cs" />
     <Compile Include="User\ApplicationUserManager.cs" />
     <Compile Include="User\ApplicationUserStore.cs" />
@@ -140,6 +156,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202103182323087_init1.resx">
       <DependentUpon>202103182323087_init1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103191330007_addingHost.resx">
+      <DependentUpon>202103191330007_addingHost.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103191401167_removingHost.resx">
+      <DependentUpon>202103191401167_removingHost.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103191402553_addingUserInEvent.resx">
+      <DependentUpon>202103191402553_addingUserInEvent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103191642465_addedNameToEvent.resx">
+      <DependentUpon>202103191642465_addedNameToEvent.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

@@ -19,10 +19,10 @@ namespace BL.Configuration
                 {
                     c.CreateMap<ApplicationIdentityUser, LoginViewModel>().ReverseMap();
                     c.CreateMap<ApplicationIdentityUser, RegisterViewModel>().ReverseMap();
-                    
-                    
-                    //map all view models with their respectful models
                     c.CreateMap<Order, OrderViewModel>().ReverseMap();
+                    c.CreateMap<Event, EventViewModel>().ReverseMap();
+
+                    //map all view models with their respectful models
 
                 });
             Mapper = config.CreateMapper();
