@@ -106,5 +106,16 @@ namespace BL.Bases
                 return client;
             }
         }
+
+        private ShoppingCartRepository shoppingCart;
+        public ShoppingCartRepository ShoppingCart
+        {
+            get
+            {
+                if (shoppingCart == null)
+                    shoppingCart = new ShoppingCartRepository(DbContext);
+                return shoppingCart;
+            }
+        }
     }
 }

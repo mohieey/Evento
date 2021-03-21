@@ -28,5 +28,10 @@ namespace BL.Repositories
 
             return newClient;
         }
+
+        public ClientUser GetClientById(string id)
+        {
+            return _DbContext.ClientUsers.Find(id);
+        }
     }
 }

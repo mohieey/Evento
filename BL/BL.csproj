@@ -82,6 +82,7 @@
     <Compile Include="AppServices\EventAppService.cs" />
     <Compile Include="AppServices\OrderAppService.cs" />
     <Compile Include="AppServices\RoleAppService.cs" />
+    <Compile Include="AppServices\ShoppingCartAppService.cs" />
     <Compile Include="Bases\BaseAppService.cs" />
     <Compile Include="Bases\BaseRepository.cs" />
     <Compile Include="Bases\UnitOfWork.cs" />
@@ -95,6 +96,7 @@
     <Compile Include="Repositories\HostAccountRepository.cs" />
     <Compile Include="Repositories\OrderRepository.cs" />
     <Compile Include="Repositories\RoleRepository.cs" />
+    <Compile Include="Repositories\ShoppingCartRepository.cs" />
     <Compile Include="Repositories\TicketRepository.cs" />
     <Compile Include="ViewModels\EventViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
