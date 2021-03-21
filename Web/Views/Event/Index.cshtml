@@ -1,0 +1,134 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+@using DAL;
+@model IPagedList<BL.ViewModels.EventViewModel>
+@{
+    ViewBag.Title = "Events";
+}
+
+<h2>Events</h2>
+
+<button data-toggle="collapse" data-target="#demo">Filter</button>
+
+<div id="demo" class="collapse">
+
+    @using (Html.BeginForm("Index", "Event", FormMethod.Get))
+    {
+        <div class="form-group">
+            @Html.Label("Name")
+            @Html.TextBox("eventName")
+            <button class="btn btn-outline-dark">Search By Name</button>
+        </div>
+    }
+
+
+    @using (Html.BeginForm("Index", "Event", FormMethod.Get))
+    {
+        <div class="form-group">
+            @Html.Label("Host Name")
+            @Html.TextBox("hostName")
+            <button class="btn btn-outline-dark">Search By Host Name</button>
+        </div>
+    }
+
+
+    @using (Html.BeginForm("IndexByCategory", "Event", FormMethod.Get))
+    {
+
+        <div class="form-group">
+            @Html.Label("Category")
+            @{
+                var itemsList = new List<SelectListItem>();
+                itemsList.AddRange(Enum.GetValues(typeof(Enum_Category)).Cast<Enum_Category>().Select(
+               (item, index) => new SelectListItem
+               {
+                   Text = item.ToString(),
+                   Value = (index).ToString()
+               }).ToList());
+            }
+
+            @Html.DropDownList("category", itemsList)
+            <button class="btn btn-outline-dark">Show By Category</button>
+
+        </div>
+
+    }
+
+    @using (Html.BeginForm("IndexByAge", "Event", FormMethod.Get))
+    {
+
+        <div class="form-group">
+            @Html.Label("Age")
+            @{
+                var itemsList = new List<SelectListItem>();
+                itemsList.AddRange(Enum.GetValues(typeof(Enum_Age)).Cast<Enum_Age>().Select(
+               (item, index) => new SelectListItem
+               {
+                   Text = item.ToString(),
+                   Value = (index).ToString()
+               }).ToList());
+            }
+
+            @Html.DropDownList("Age", itemsList)
+            <button class="btn btn-outline-dark">Show By Age</button>
+
+        </div>
+
+    }
+
+</div>
+
+
+
+
+
+
+
+
+
+<div class="container">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Event Name</th>
+                <th>Location</th>
+                <th>Category</th>
+                <th>Age</th>
+                <th>Host</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var e in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.ActionLink(e.Name, "Details", "Event", e, null)
+                        @if (e.Host.user.UserName == User.Identity.Name)
+                        {
+                            @Html.ActionLink("Edit", "EditEvent", "Event", e, new { @class = "btn btn-primary" })
+                        }
+                    </td>
+                    <td>@e.location</td>
+                    <td>@e.category</td>
+                    <td>@e.age</td>
+                    <td>@e.Host.user.UserName</td>
+                    <td>@Html.ActionLink("Book", "New", "Products", null, new { @class = "btn btn-primary" })</td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+
+
+
+
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page, categoryName = Request.QueryString["categoryName"] }))
+

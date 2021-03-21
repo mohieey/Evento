@@ -4,6 +4,7 @@ using BL.ViewModels;
 using DAL;
 using DAL.User;
 using Microsoft.AspNet.Identity;
+using PagedList;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,12 +16,62 @@ namespace Web.Controllers
     public class EventController : Controller
     {
         EventAppService eventAppService = new EventAppService();
-        
+
         // GET: Event
-        public ActionResult Index()
+        public ActionResult Index(string eventName, int? page)
         {
-            return View();
+            if (!(eventName is null))
+            {
+                return View("Index", eventAppService.GetAllEvents().Where(e => e.Name.Contains(eventName)).ToList().ToPagedList(page ?? 1, 3));
+
+            }
+
+            return View(eventAppService.GetAllEvents().ToPagedList(page ?? 1, 3));
         }
+
+
+
+
+        public ActionResult IndexByHostName(string hostName, int? page)
+        {
+            if (!(hostName is null))
+            {
+                return View("Index", eventAppService.GetAllEvents().Where(e => e.Host.user.UserName.Contains(hostName)).ToList().ToPagedList(page ?? 1, 3));
+
+            }
+
+            return View(eventAppService.GetAllEvents().ToPagedList(page ?? 1, 3));
+        }
+
+
+
+
+
+
+        public ActionResult IndexByCategory(Enum_Category? Category, int? page)
+        {
+            if (Category is null)
+            {
+                return View("Index", eventAppService.GetAllEvents().ToList().ToPagedList(page ?? 1, 3));
+
+            }
+
+            return View("Index", eventAppService.GetAllEvents().Where(e => e.category == Category).ToPagedList(page ?? 1, 3));
+        }
+
+
+
+        public ActionResult IndexByAge(Enum_Age? Age, int? page)
+        {
+            if (Age is null)
+            {
+                return View("Index", eventAppService.GetAllEvents().ToList().ToPagedList(page ?? 1, 3));
+
+            }
+
+            return View("Index", eventAppService.GetAllEvents().Where(e => e.age == Age).ToPagedList(page ?? 1, 3));
+        }
+
 
         [Authorize(Roles = "Host")]
         public ActionResult CreateEvent() => View();
@@ -36,6 +87,24 @@ namespace Web.Controllers
                 return View(newEvent);
 
             eventAppService.SaveNewEvent(newEvent);
+            return RedirectToAction("Index");
+        }
+
+
+        
+        [Authorize(Roles = "Host")]
+        public ActionResult EditEvent(EventViewModel editEvent)
+        {
+            return View("EditEvent", editEvent);
+        }
+
+
+        [Authorize(Roles = "Host")]
+        public ActionResult SaveChanges(EventViewModel editEvent)
+        {
+            
+            eventAppService.SaveEventChanges(editEvent);
+   
             return RedirectToAction("Index");
         }
     }

@@ -45,6 +45,21 @@ namespace BL.AppServices
             return result;
         }
 
+        public void SaveEventChanges(EventViewModel eventViewModel)
+        {
+
+            var @event = TheUnitOfWork.Event.GetEventById(eventViewModel.ID);
+            @event.Name = eventViewModel.Name;
+            @event.location = eventViewModel.location;
+            @event.TotalAvailableTickets = eventViewModel.TotalAvailableTickets;
+            @event.description = eventViewModel.description;
+            @event.age = eventViewModel.age;
+            @event.category = eventViewModel.category;
+            @event.isCanceled = eventViewModel.isCanceled;
+
+            TheUnitOfWork.Commit();
+        }
+
 
         //public bool CheckOutOrder(int id)
         //{
