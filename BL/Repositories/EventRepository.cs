@@ -20,7 +20,7 @@ namespace BL.Repositories
 
         public List<Event> GetAllEvents()
         {
-            return GetAll().ToList();
+            return GetAll().Include(e => e.Host.user).ToList();
         }
 
         public Event InsertEvent(Event @event)

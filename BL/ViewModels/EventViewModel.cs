@@ -13,7 +13,13 @@ namespace BL.ViewModels
     public class EventViewModel
     {
         [HiddenInput(DisplayValue = false)]
+        public int ID { get; set; }
+
+
+
+        [HiddenInput(DisplayValue = false)]
         public string HostId { get; set; }
+        public virtual HostUser Host { get; set; }
 
         [Required]
         [MinLength(4)]
@@ -21,6 +27,8 @@ namespace BL.ViewModels
 
         [Required]
         public DateTime date { get; set; }
+
+
 
         [Required]
         public Enum_Age age { get; set; }
@@ -31,9 +39,14 @@ namespace BL.ViewModels
         [Required]
         public int TotalAvailableTickets { get; set; }
 
+        [Display(Name ="Canceled?")]
+        public bool isCanceled { get; set; }
+
         //[Required]
-       
+
 
         public string description { get; set; }
+        public string location { get; set; }
+
     }
 }

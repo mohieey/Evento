@@ -8,7 +8,8 @@ namespace DAL
         Under16,
         Under18,
         Under21,
-        Under25
+        Under25,
+        All
 
     }
 }
