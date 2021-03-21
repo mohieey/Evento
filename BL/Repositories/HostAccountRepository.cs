@@ -22,7 +22,11 @@ namespace BL.Repositories
 
         public HostUser AddAsAHost(HostUser host)
         {
-            return _DbContext.HostUsers.Add(host);
+            _DbContext.HostUsers.Add(host);
+
+            _DbContext.SaveChanges();
+
+            return host;
         }
     }
 }

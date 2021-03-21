@@ -142,6 +142,10 @@
     <Compile Include="Migrations\202103201850317_AddedHostClient.Designer.cs">
       <DependentUpon>202103201850317_AddedHostClient.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202103211435321_addedHostIdInEvent.cs" />
+    <Compile Include="Migrations\202103211435321_addedHostIdInEvent.Designer.cs">
+      <DependentUpon>202103211435321_addedHostIdInEvent.cs</DependentUpon>
+    </Compile>
     <Compile Include="ShoppingCart.cs" />
     <Compile Include="User\ApplicationIdentityUser.cs" />
     <Compile Include="User\ApplicationUserManager.cs" />
@@ -198,6 +202,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202103201850317_AddedHostClient.resx">
       <DependentUpon>202103201850317_AddedHostClient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103211435321_addedHostIdInEvent.resx">
+      <DependentUpon>202103211435321_addedHostIdInEvent.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

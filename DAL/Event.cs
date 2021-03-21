@@ -17,7 +17,8 @@ namespace DAL
         public int TotalAvailableTickets { get; set; }
         public bool isCanceled { get; set; } = false;
 
-        
+        [ForeignKey("Host")]
+        public string HostId { get; set; }
         public virtual HostUser Host { get; set; }
 
         public virtual string location { get; set; }

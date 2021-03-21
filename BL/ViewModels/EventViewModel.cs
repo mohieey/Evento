@@ -6,14 +6,14 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Mvc;
 
 namespace BL.ViewModels
 {
     public class EventViewModel
     {
-       
-        //public string HostId { get; set; }
-
+        [HiddenInput(DisplayValue = false)]
+        public string HostId { get; set; }
 
         [Required]
         [MinLength(4)]
@@ -35,9 +35,5 @@ namespace BL.ViewModels
        
 
         public string description { get; set; }
-
-
-
-        public virtual HostUser Host { get; set; }
     }
 }

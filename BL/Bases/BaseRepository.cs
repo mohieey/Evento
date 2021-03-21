@@ -89,7 +89,6 @@ namespace BL.Bases
             }
             else
             {
-                
                 entity = DbSet.Add(entity);
             }
             return entity;

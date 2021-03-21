@@ -13,7 +13,8 @@ namespace DAL.User
         [Key,ForeignKey("user")]
         public string Id { get; set; }
         public virtual ApplicationIdentityUser user { get; set; }
-        public virtual List<Event> events { get; set; }
+
+        public virtual ICollection<Event> events { get; set; }
 
     }
 }

@@ -9,8 +9,9 @@ namespace DAL.User
         [Key, ForeignKey("user")]
         public string Id { get; set; }
         public virtual ApplicationIdentityUser user { get; set; }
+
         public virtual ShoppingCart shoppingCart { get; set; }
-        public virtual List<Order> orders { get; set; }
+        public virtual ICollection<Order> orders { get; set; }
 
 
     }

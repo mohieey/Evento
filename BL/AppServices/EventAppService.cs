@@ -34,11 +34,10 @@ namespace BL.AppServices
         //    return Mapper.Map<OrderViewModel>(TheUnitOfWork.Order.GetOrdersByClientId(id));
         //}
 
-        public bool SaveNewEvent(EventViewModel eventViewModel, ApplicationIdentityUser user)
+        public bool SaveNewEvent(EventViewModel eventViewModel)
         {
             bool result = false;
             var @event = Mapper.Map<Event>(eventViewModel);
-            @event.Host = Mapper.Map<HostUser>(user);
 
             TheUnitOfWork.Event.InsertEvent(@event);
             result = TheUnitOfWork.Commit() > new int();

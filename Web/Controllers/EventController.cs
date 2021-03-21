@@ -30,12 +30,12 @@ namespace Web.Controllers
         public ActionResult CreateEvent(EventViewModel newEvent)
         {
             AccountAppService accountAppService = new AccountAppService();
-            ApplicationIdentityUser user = accountAppService.GetUserById(User.Identity.GetUserId());
+            newEvent.HostId = User.Identity.GetUserId();
 
             if (ModelState.IsValid == false)
                 return View(newEvent);
 
-            eventAppService.SaveNewEvent(newEvent, user);
+            eventAppService.SaveNewEvent(newEvent);
             return RedirectToAction("Index");
         }
     }

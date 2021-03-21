@@ -22,6 +22,8 @@ namespace BL.AppServices
         {
             ApplicationIdentityUser identityUser =
                 Mapper.Map<RegisterViewModel, ApplicationIdentityUser>(user);
+
+            IdentityResult identityResult = TheUnitOfWork.Account.Register(identityUser);
             if (!isAdmin)
             {
                 if (isHost)
@@ -35,13 +37,12 @@ namespace BL.AppServices
                     TheUnitOfWork.Client.AddAsAClient(client);
                 }
             }
-            return TheUnitOfWork.Account.Register(identityUser);
+            return identityResult;
         }
         public IdentityResult AssignToRole(string userid, string rolename)
         {
             return TheUnitOfWork.Account.AssignToRole(userid, rolename);
         }
-
 
         public ApplicationIdentityUser GetUserById(string id)
         {
