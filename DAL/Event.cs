@@ -16,6 +16,7 @@ namespace DAL
         public Enum_Category category { get; set; }
         public int TotalAvailableTickets { get; set; }
         public bool isCanceled { get; set; } = false;
+        public string image { get; set; }
 
         [ForeignKey("Host")]
         public string HostId { get; set; }

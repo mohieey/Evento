@@ -78,13 +78,23 @@ namespace Web.Controllers
 
         [HttpPost]
         [Authorize(Roles = "Host")]
-        public ActionResult CreateEvent(EventViewModel newEvent)
+        public ActionResult CreateEvent(EventViewModel newEvent, HttpPostedFileBase file)
         {
+            ViewBag.ImageError = null;
+            if (!ModelState.IsValid || file == null)
+            {
+                if (file == null)
+                    ViewBag.ImageError = "Please add an image for the event.";
+                return View(newEvent);
+            }
+
+            var image = System.IO.Path.GetFileName(file.FileName);
+            file.SaveAs(Server.MapPath("~/Content/" + image));
+            newEvent.image = image;
+
             AccountAppService accountAppService = new AccountAppService();
             newEvent.HostId = User.Identity.GetUserId();
 
-            if (ModelState.IsValid == false)
-                return View(newEvent);
 
             eventAppService.SaveNewEvent(newEvent);
             return RedirectToAction("Index");

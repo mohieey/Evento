@@ -42,9 +42,9 @@ namespace BL.ViewModels
         [Display(Name ="Canceled?")]
         public bool isCanceled { get; set; }
 
-        //[Required]
+        public string image { get; set; }
 
-
+        [Required]
         public string description { get; set; }
         public string location { get; set; }
 

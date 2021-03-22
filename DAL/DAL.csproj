@@ -150,6 +150,10 @@
     <Compile Include="Migrations\202103211828501_addedShoppingCartIdInClientUser.Designer.cs">
       <DependentUpon>202103211828501_addedShoppingCartIdInClientUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202103221524342_addedImageToEvents.cs" />
+    <Compile Include="Migrations\202103221524342_addedImageToEvents.Designer.cs">
+      <DependentUpon>202103221524342_addedImageToEvents.cs</DependentUpon>
+    </Compile>
     <Compile Include="ShoppingCart.cs" />
     <Compile Include="User\ApplicationIdentityUser.cs" />
     <Compile Include="User\ApplicationUserManager.cs" />
@@ -212,6 +216,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202103211828501_addedShoppingCartIdInClientUser.resx">
       <DependentUpon>202103211828501_addedShoppingCartIdInClientUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103221524342_addedImageToEvents.resx">
+      <DependentUpon>202103221524342_addedImageToEvents.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />
