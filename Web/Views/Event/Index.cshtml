@@ -8,7 +8,7 @@
 
 <h2>Events</h2>
 
-<button data-toggle="collapse" data-target="#demo">Filter</button>
+<button data-toggle="collapse" data-target="#demo" class="btn btn-info">Filter</button>
 
 <div id="demo" class="collapse">
 
@@ -40,14 +40,14 @@
             @{
                 var itemsList = new List<SelectListItem>();
                 itemsList.AddRange(Enum.GetValues(typeof(Enum_Category)).Cast<Enum_Category>().Select(
-               (item, index) => new SelectListItem
-               {
-                   Text = item.ToString(),
-                   Value = (index).ToString()
-               }).ToList());
+                (item, index) => new SelectListItem
+                {
+                    Text = item.ToString(),
+                    Value = (index).ToString()
+                }).ToList());
             }
 
-            @Html.DropDownList("category", itemsList)
+            @Html.DropDownList("category", itemsList,new { @class= "custom-select" })
             <button class="btn btn-outline-dark">Show By Category</button>
 
         </div>
@@ -62,11 +62,11 @@
             @{
                 var itemsList = new List<SelectListItem>();
                 itemsList.AddRange(Enum.GetValues(typeof(Enum_Age)).Cast<Enum_Age>().Select(
-               (item, index) => new SelectListItem
-               {
-                   Text = item.ToString(),
-                   Value = (index).ToString()
-               }).ToList());
+                (item, index) => new SelectListItem
+                {
+                    Text = item.ToString(),
+                    Value = (index).ToString()
+                }).ToList());
             }
 
             @Html.DropDownList("Age", itemsList)
@@ -78,6 +78,7 @@
 
 </div>
 
+<hr />
 
 
 
@@ -85,8 +86,7 @@
 
 
 
-
-<div class="container">
+@*<div class="container">
     <table class="table table-bordered">
         <thead>
             <tr>
@@ -120,7 +120,67 @@
             }
         </tbody>
     </table>
-</div>
+</div>*@
+<div class="container">
+    <div class="card-columns">
+        @foreach (var e in Model)
+        {
+            string bgClass = string.Empty;
+            switch (e.category)
+            {
+                case Enum_Category.Comedy:
+                    bgClass = "bg-warning";
+                    break;
+                case Enum_Category.Sports:
+                    bgClass = "bg-success";
+                    break;
+                case Enum_Category.Musical:
+                    bgClass = "bg-info";
+                    break;
+                case Enum_Category.Cultural:
+                    bgClass = "bg-light";
+                    break;
+                case Enum_Category.Educational:
+                    bgClass = "bg-secondary";
+                    break;
+                case Enum_Category.Kids:
+                    bgClass = "bg-warning";
+                    break;
+                case Enum_Category.Tech:
+                    bgClass = "bg-dark";
+                    break;
+                default:
+                    // code block
+                    break;
+            }
+            <div class="card @bgClass" style="height:290px;">
+                <div class="card-body text-center">
+                    
+                    @if (e.Host.user.UserName == User.Identity.Name)
+                    {
+                        <p class="btn btn-light">
+                            @Html.ActionLink("Edit", "EditEvent", "Event", e, new { @class = "" })
+                        </p>
+                        }
+                      
+                        <p class="card-text display-3 text-white" style="font-size:larger">
+                            @Html.ActionLink(e.Name, "Details", "Event", e, new { @class = "text-white" })
+
+                        </p>
+                        <p class="card-text display-4 text-white" style="font-size:medium">@e.location</p>
+                        <p class="card-text display-4 text-white" style="font-size:medium">@e.category</p>
+                        <p class="card-text display-4 text-white" style="font-size:medium">@e.age</p>
+                        <p class="card-text display-4 text-white" style="font-size:medium">@e.Host.user.UserName</p>
+
+                    </div>
+                </div>
+
+
+            }
+
+
+                </div>
+            </div>
 
 
 
@@ -130,5 +190,13 @@
 
 
 
-@Html.PagedListPager(Model, page => Url.Action("Index", new { page, categoryName = Request.QueryString["categoryName"] }))
-
+<ul class="pagination">
+    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+    <li class="page-item">@Html.PagedListPager(Model, page => Url.Action("Index", new { page, categoryName = Request.QueryString["categoryName"] }),
+    new PagedListRenderOptions()
+    {
+        LiElementClasses = new List<string> { "page-link active text-white" }
+    })</li>
+    
+    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+</ul>
