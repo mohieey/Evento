@@ -22,11 +22,11 @@ namespace Web.Controllers
         {
             if (!(eventName is null))
             {
-                return View("Index", eventAppService.GetAllEvents().Where(e => e.Name.Contains(eventName)).ToList().ToPagedList(page ?? 1, 3));
+                return View("Index", eventAppService.GetAllEvents().Where(e => e.Name.Contains(eventName)).ToList().ToPagedList(page ?? 1, 9));
 
             }
 
-            return View(eventAppService.GetAllEvents().ToPagedList(page ?? 1, 3));
+            return View(eventAppService.GetAllEvents().ToPagedList(page ?? 1, 9));
         }
 
 
@@ -36,11 +36,11 @@ namespace Web.Controllers
         {
             if (!(hostName is null))
             {
-                return View("Index", eventAppService.GetAllEvents().Where(e => e.Host.user.UserName.Contains(hostName)).ToList().ToPagedList(page ?? 1, 3));
+                return View("Index", eventAppService.GetAllEvents().Where(e => e.Host.user.UserName.Contains(hostName)).ToList().ToPagedList(page ?? 1, 9));
 
             }
 
-            return View(eventAppService.GetAllEvents().ToPagedList(page ?? 1, 3));
+            return View(eventAppService.GetAllEvents().ToPagedList(page ?? 1, 9));
         }
 
 
@@ -52,11 +52,11 @@ namespace Web.Controllers
         {
             if (Category is null)
             {
-                return View("Index", eventAppService.GetAllEvents().ToList().ToPagedList(page ?? 1, 3));
+                return View("Index", eventAppService.GetAllEvents().ToList().ToPagedList(page ?? 1, 9));
 
             }
 
-            return View("Index", eventAppService.GetAllEvents().Where(e => e.category == Category).ToPagedList(page ?? 1, 3));
+            return View("Index", eventAppService.GetAllEvents().Where(e => e.category == Category).ToPagedList(page ?? 1, 9));
         }
 
 
@@ -65,11 +65,11 @@ namespace Web.Controllers
         {
             if (Age is null)
             {
-                return View("Index", eventAppService.GetAllEvents().ToList().ToPagedList(page ?? 1, 3));
+                return View("Index", eventAppService.GetAllEvents().ToList().ToPagedList(page ?? 1, 9));
 
             }
 
-            return View("Index", eventAppService.GetAllEvents().Where(e => e.age == Age).ToPagedList(page ?? 1, 3));
+            return View("Index", eventAppService.GetAllEvents().Where(e => e.age == Age).ToPagedList(page ?? 1, 9));
         }
 
 
@@ -106,6 +106,17 @@ namespace Web.Controllers
             eventAppService.SaveEventChanges(editEvent);
    
             return RedirectToAction("Index");
+        }
+
+
+
+        [Authorize]
+        public ActionResult Details(int id)
+        {
+
+       
+
+            return View(eventAppService.GetEventById(id));
         }
     }
 }
