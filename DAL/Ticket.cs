@@ -1,4 +1,5 @@
 ﻿using DAL.User;
+using System;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DAL
@@ -10,10 +11,12 @@ namespace DAL
         public int ID { get; set; }
         public int price { get; set; }
         public Enum_TicketClass @class { get; set; }
-        //public int OrderID { get; set; }
+        public DateTime? date { get; set; }
 
-        //[ForeignKey("OrderID")]
-        //public Order order { get; set; }
+        [ForeignKey("order")]
+        public int OrderID { get; set; }
+        public Order order { get; set; }
+
         public virtual Event @event { get; set; }
         public virtual ClientUser Client { get; set; } = null;
     }

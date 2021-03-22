@@ -83,6 +83,7 @@
     <Compile Include="AppServices\OrderAppService.cs" />
     <Compile Include="AppServices\RoleAppService.cs" />
     <Compile Include="AppServices\ShoppingCartAppService.cs" />
+    <Compile Include="AppServices\TicketAppService.cs" />
     <Compile Include="Bases\BaseAppService.cs" />
     <Compile Include="Bases\BaseRepository.cs" />
     <Compile Include="Bases\UnitOfWork.cs" />
@@ -102,6 +103,7 @@
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\OrderViewModel.cs" />
     <Compile Include="ViewModels\RegisterViewModel.cs" />
+    <Compile Include="ViewModels\TicketViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DAL\DAL.csproj">
