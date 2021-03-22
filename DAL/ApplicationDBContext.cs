@@ -34,7 +34,6 @@ namespace DAL
         public virtual DbSet<HostUser> HostUsers { get; set; }
         public virtual DbSet<ClientUser> ClientUsers { get; set; }
 
-
     }
 
 
