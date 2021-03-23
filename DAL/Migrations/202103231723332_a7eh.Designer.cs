@@ -7,13 +7,13 @@ namespace DAL.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.0-30225")]
-    public sealed partial class addedImageToEvents : IMigrationMetadata
+    public sealed partial class a7eh : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(addedImageToEvents));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(a7eh));
         
         string IMigrationMetadata.Id
         {
-            get { return "202103221524342_addedImageToEvents"; }
+            get { return "202103231723332_a7eh"; }
         }
         
         string IMigrationMetadata.Source

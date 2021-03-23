@@ -15,11 +15,20 @@ namespace BL.AppServices
             return TheUnitOfWork.ShoppingCart.GetShoppingCartByUserId(userId);
         }
 
-        public Ticket AddTicketToShoppingCart(Ticket newTicket, string userId)
+        public Ticket AddTicketToShoppingCart(Ticket ticket)
         {
-            GetShoppingCartByUserId(userId);
-
-            return newTicket;
+            ShoppingCart shoppingCart=  GetShoppingCartByUserId(ticket.clientId);
+            shoppingCart.Tickets.Add(ticket);
+            shoppingCart.totalPrice += ticket.price;
+            TheUnitOfWork.Commit();
+            
+            return ticket;
         }
+
+
+       public void Commit()
+        {
+            TheUnitOfWork.Commit();
+        } 
     }
 }

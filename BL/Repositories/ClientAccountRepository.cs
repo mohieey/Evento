@@ -31,7 +31,7 @@ namespace BL.Repositories
 
         public ClientUser GetClientById(string id)
         {
-            return _DbContext.ClientUsers.Find(id);
+            return _DbContext.ClientUsers.Include(c=>c.shoppingCart).SingleOrDefault(c=>c.Id==id);
         }
     }
 }
