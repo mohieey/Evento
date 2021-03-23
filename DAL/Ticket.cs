@@ -17,7 +17,15 @@ namespace DAL
         public int OrderID { get; set; }
         public Order order { get; set; }
 
+        [ForeignKey("event")]
+        public int eventId { get; set; }
         public virtual Event @event { get; set; }
-        public virtual ClientUser Client { get; set; } = null;
+
+        [ForeignKey("Client")]
+        public string clientId { get; set; }
+        public virtual ClientUser Client
+        {
+            get; set;
+        }
     }
 }

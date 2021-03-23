@@ -23,6 +23,6 @@ namespace DAL
         public virtual HostUser Host { get; set; }
 
         public virtual string location { get; set; }
-        public virtual List<Ticket> tickets { get; set; }
+        public virtual List<Ticket> tickets { get; set; } = new List<Ticket>();
     }
 }

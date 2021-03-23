@@ -1,0 +1,30 @@
+﻿@model DAL.ShoppingCart
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>My Cart</h2>
+<div class="container">
+    @{ foreach (var t in Model.Tickets)
+        {
+
+            var eventName = t.@event.Name;
+
+
+
+
+            <div class="alert alert-success alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                @eventName for <strong>@t.price</strong>
+            </div>
+
+
+
+
+        }
+    }
+    <p class="display-4" style="font-size:35px;">Total = @Model.totalPrice </p>
+    @Html.ActionLink("Check Out", "CheckOut", "ShoppingCart", Model, new { @class = "btn btn-secondary " })
+
+</div>
+

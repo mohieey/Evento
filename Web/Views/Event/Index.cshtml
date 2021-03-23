@@ -171,6 +171,7 @@
                         <p class="card-text display-4 text-white" style="font-size:medium">@e.category</p>
                         <p class="card-text display-4 text-white" style="font-size:medium">@e.age</p>
                         <p class="card-text display-4 text-white" style="font-size:medium">@e.Host.user.UserName</p>
+                        @Html.ActionLink("Book", "Create", "Ticket", e , new { @class = "btn btn-primary" })
 
                     </div>
                 </div>
