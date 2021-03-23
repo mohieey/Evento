@@ -22,8 +22,10 @@ namespace Web.Controllers
         {
             if (!(eventName is null))
             {
-                return View("Index", eventAppService.GetAllEvents().Where(e => e.Name.Contains(eventName)).ToList().ToPagedList(page ?? 1, 9));
-
+                return View("Index", eventAppService.GetAllEvents()
+                                                    .Where(e => e.Name
+                                                    .Contains(eventName))
+                                                    .ToList().ToPagedList(page ?? 1, 9));
             }
 
             return View(eventAppService.GetAllEvents().ToPagedList(page ?? 1, 9));
@@ -95,29 +97,53 @@ namespace Web.Controllers
             AccountAppService accountAppService = new AccountAppService();
             newEvent.HostId = User.Identity.GetUserId();
 
-
             eventAppService.SaveNewEvent(newEvent);
             return RedirectToAction("Index");
         }
 
-
+        [Authorize(Roles = "Host")]
+        public ActionResult EditEvent(int id)
+        {
+            return View(eventAppService.GetEventById(id));
+        }
         
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         [Authorize(Roles = "Host")]
-        public ActionResult EditEvent(EventViewModel editEvent)
+        public ActionResult EditEvent(EventViewModel editEvent, HttpPostedFileBase file)
         {
-            return View("EditEvent", editEvent);
+            if (ModelState.IsValid)
+            {
+                string image;
+                if (file != null)
+                {
+                    image = System.IO.Path.GetFileName(file.FileName);
+                    file.SaveAs(Server.MapPath("~/Content/" + image));
+                }
+                else
+                {
+                    image = eventAppService.GetEventById(editEvent.ID).image;
+                }
+                editEvent.image = image;
+                editEvent = eventAppService.EditEvent(editEvent);
+
+                return View(editEvent);
+            }
+            else
+            {
+                return View("Index");
+            }
         }
 
 
-        [Authorize(Roles = "Host")]
-        public ActionResult SaveChanges(EventViewModel editEvent)
-        {
+        //[Authorize(Roles = "Host")]
+        //public ActionResult SaveChanges(EventViewModel editEvent)
+        //{
             
-            eventAppService.SaveEventChanges(editEvent);
+        //    eventAppService.SaveEventChanges(editEvent);
    
-            return RedirectToAction("Index");
-        }
-
+        //    return RedirectToAction("Index");
+        //}
 
 
         [Authorize]

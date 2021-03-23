@@ -34,6 +34,16 @@ namespace BL.AppServices
         //    return Mapper.Map<OrderViewModel>(TheUnitOfWork.Order.GetOrdersByClientId(id));
         //}
 
+        public EventViewModel EditEvent(EventViewModel eventViewModel)
+        {
+            var @event = TheUnitOfWork.Event.GetEventById(eventViewModel.ID);
+            Mapper.Map(eventViewModel, @event);
+
+            TheUnitOfWork.Event.UpdateEvent(@event);
+            TheUnitOfWork.Commit();
+            return eventViewModel;
+        }
+
         public bool SaveNewEvent(EventViewModel eventViewModel)
         {
             bool result = false;
@@ -45,20 +55,20 @@ namespace BL.AppServices
             return result;
         }
 
-        public void SaveEventChanges(EventViewModel eventViewModel)
-        {
+        //public void SaveEventChanges(EventViewModel eventViewModel)
+        //{
 
-            var @event = TheUnitOfWork.Event.GetEventById(eventViewModel.ID);
-            @event.Name = eventViewModel.Name;
-            @event.location = eventViewModel.location;
-            @event.TotalAvailableTickets = eventViewModel.TotalAvailableTickets;
-            @event.description = eventViewModel.description;
-            @event.age = eventViewModel.age;
-            @event.category = eventViewModel.category;
-            @event.isCanceled = eventViewModel.isCanceled;
+        //    var @event = TheUnitOfWork.Event.GetEventById(eventViewModel.ID);
+        //    @event.Name = eventViewModel.Name;
+        //    @event.location = eventViewModel.location;
+        //    @event.TotalAvailableTickets = eventViewModel.TotalAvailableTickets;
+        //    @event.description = eventViewModel.description;
+        //    @event.age = eventViewModel.age;
+        //    @event.category = eventViewModel.category;
+        //    @event.isCanceled = eventViewModel.isCanceled;
 
-            TheUnitOfWork.Commit();
-        }
+        //    TheUnitOfWork.Commit();
+        //}
 
 
         //public bool CheckOutOrder(int id)

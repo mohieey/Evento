@@ -158,6 +158,10 @@
     <Compile Include="Migrations\202103221721009_test.Designer.cs">
       <DependentUpon>202103221721009_test.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202103231720414_a7eh.cs" />
+    <Compile Include="Migrations\202103231720414_a7eh.Designer.cs">
+      <DependentUpon>202103231720414_a7eh.cs</DependentUpon>
+    </Compile>
     <Compile Include="ShoppingCart.cs" />
     <Compile Include="User\ApplicationIdentityUser.cs" />
     <Compile Include="User\ApplicationUserManager.cs" />
@@ -223,6 +227,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202103221721009_test.resx">
       <DependentUpon>202103221721009_test.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103231720414_a7eh.resx">
+      <DependentUpon>202103231720414_a7eh.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

@@ -102,10 +102,10 @@ namespace BL.Bases
         public virtual void Update(T entity)
         {
             DbEntityEntry dbEntityEntry = DbContext.Entry(entity);
-            if (dbEntityEntry.State == EntityState.Detached)
-            {
-                DbSet.Attach(entity);
-            }
+            //if (dbEntityEntry.State == EntityState.Detached)
+            //{
+            //    DbSet.Attach(entity);
+            //}
             dbEntityEntry.State = EntityState.Modified;
         }
 
