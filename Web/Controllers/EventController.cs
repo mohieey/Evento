@@ -150,9 +150,6 @@ namespace Web.Controllers
         [Authorize]
         public ActionResult Details(int id)
         {
-
-       
-
             return View(eventAppService.GetEventById(id));
         }
     }

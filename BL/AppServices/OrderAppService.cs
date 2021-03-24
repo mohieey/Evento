@@ -23,16 +23,37 @@ namespace BL.AppServices
             return Mapper.Map<OrderViewModel>(TheUnitOfWork.Order.GetOrderById(id));
         }
 
-        public Order InsertOrder(string id)
+        public Order InsertOrder(string userId, int totalPrice)
         {
-            ClientAccountRepository clientRepo = new ClientAccountRepository(ApplicationDBContext.applicationDBContext);
-            ClientUser client = clientRepo.GetClientById(id);
-
-            Order newOrder = new Order { clientId = client.Id };
+            //ClientAccountRepository clientRepo = new ClientAccountRepository(ApplicationDBContext.applicationDBContext);
+            //ClientUser client = clientRepo.GetClientById(id);
+            Order newOrder = new Order { clientId = userId, totalPrice = totalPrice };
 
             TheUnitOfWork.Order.Insert(newOrder);
 
             TheUnitOfWork.Commit();
+            return newOrder;
+        }
+
+        public Order TransferTicketsToOrder(Order newOrder, List<Ticket> ticketList)
+        {
+            foreach (var ticket in ticketList)
+            {
+                TheUnitOfWork.OrderTicket.Insert(
+                    new OrderTicket
+                    {
+                        orderId = newOrder.ID,
+                        ticketId = ticket.ID
+                    });
+            }
+            TheUnitOfWork.Commit();
+
+            var shoppingCart = TheUnitOfWork.ShoppingCart.GetShoppingCartByUserId(newOrder.clientId);
+
+            TheUnitOfWork.ShoppingCartTicket.ClearShoppingCart(shoppingCart.ID);
+            
+            TheUnitOfWork.Commit();
+
             return newOrder;
         }
 

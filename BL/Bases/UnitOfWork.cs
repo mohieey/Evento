@@ -128,6 +128,16 @@ namespace BL.Bases
                 return shoppingCartTicket;
             }
         }
-        
+
+        private OrderTicketRepository orderTicket;
+        public OrderTicketRepository OrderTicket
+        {
+            get
+            {
+                if (orderTicket == null)
+                    orderTicket = new OrderTicketRepository(DbContext);
+                return orderTicket;
+            }
+        }
     }
 }

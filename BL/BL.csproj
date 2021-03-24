@@ -96,6 +96,7 @@
     <Compile Include="Repositories\EventRepository.cs" />
     <Compile Include="Repositories\HostAccountRepository.cs" />
     <Compile Include="Repositories\OrderRepository.cs" />
+    <Compile Include="Repositories\OrderTicketRepository.cs" />
     <Compile Include="Repositories\RoleRepository.cs" />
     <Compile Include="Repositories\ShoppingCartRepository.cs" />
     <Compile Include="Repositories\ShoppingCartTicketsRepository.cs" />

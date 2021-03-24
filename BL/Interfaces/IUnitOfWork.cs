@@ -18,6 +18,7 @@ namespace BL.Interfaces
         ClientAccountRepository Client { get; }
         ShoppingCartRepository ShoppingCart { get; }
         ShoppingCartTicketsRepository ShoppingCartTicket { get; }
+        OrderTicketRepository OrderTicket { get; }
 
 
         int Commit();

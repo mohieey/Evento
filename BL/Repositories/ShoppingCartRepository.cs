@@ -26,7 +26,9 @@ namespace BL.Repositories
             //ClientUser client = clientRepo.GetClientById(Id);
             //return client.shoppingCart;
 
-            return GetWhere(s => s.ClientId == Id).Include(s => s.ShoppingCartTickets).FirstOrDefault();
+            return GetWhere(s => s.ClientId == Id)
+                .Include(s => s.ShoppingCartTickets)
+                .FirstOrDefault();
 
         }
 

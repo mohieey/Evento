@@ -333,6 +333,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\DashBoard\" />
     <Folder Include="Views\Order\" />
     <Folder Include="Views\Roles\" />
   </ItemGroup>

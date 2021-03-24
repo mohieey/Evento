@@ -13,6 +13,7 @@ namespace Web.Controllers
     public class OrderController : Controller
     {
         OrderAppService orderAppService = new OrderAppService();
+        ShoppingCartAppService ShoppingCartAppService = new ShoppingCartAppService();
 
         // GET: Order
         public ActionResult Index()
@@ -22,7 +23,11 @@ namespace Web.Controllers
 
         public ActionResult Create(int totalPrice)
         {
-            Order newOrder = orderAppService.InsertOrder(User.Identity.GetUserId());
+            Order newOrder = orderAppService.InsertOrder(User.Identity.GetUserId(), totalPrice);
+
+            var ticketList = ShoppingCartAppService.GetTicketsByUserId(User.Identity.GetUserId());
+
+            orderAppService.TransferTicketsToOrder(newOrder, ticketList);
 
             /*
              * user clicks on check out

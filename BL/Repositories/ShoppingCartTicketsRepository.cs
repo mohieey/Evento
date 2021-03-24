@@ -17,5 +17,18 @@ namespace BL.Repositories
         {
             this._DbContext = DbContext;
         }
+
+        public List<Ticket> getTicketsByShoppingCartId(int id)
+        {
+            return GetAll().Include(sct => sct.ticket)
+                .Where(sct => sct.shoppingCartId == id)
+                .Select(sct=>sct.ticket)
+                .ToList();
+        }
+
+        public void ClearShoppingCart(int shoppingCartId)
+        {
+            RemoveRange(GetWhere(s=>s.shoppingCartId == shoppingCartId).ToList());
+        }
     }
 }

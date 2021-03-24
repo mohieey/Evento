@@ -37,7 +37,18 @@ namespace BL.AppServices
         public EventViewModel EditEvent(EventViewModel eventViewModel)
         {
             var @event = TheUnitOfWork.Event.GetEventById(eventViewModel.ID);
-            Mapper.Map(eventViewModel, @event);
+
+            //Mapper.Map(eventViewModel, @event);
+
+
+            @event.Name = eventViewModel.Name;
+            @event.location = eventViewModel.location;
+            @event.TotalAvailableTickets = eventViewModel.TotalAvailableTickets;
+            @event.description = eventViewModel.description;
+            @event.age = eventViewModel.age;
+            @event.price = eventViewModel.price;
+            @event.category = eventViewModel.category;
+            @event.image = eventViewModel.image;
 
             TheUnitOfWork.Event.UpdateEvent(@event);
             TheUnitOfWork.Commit();

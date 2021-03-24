@@ -23,7 +23,7 @@ namespace Web.Controllers
         {
             //shoppingCartAppService.GetShoppingCartByUserId(User.Identity.GetUserId());
             //return View("Index", shoppingCartAppService.GetShoppingCartByUserId(User.Identity.GetUserId()));
-            return View(shoppingCartAppService.GetTicketsByUserId(User.Identity.GetUserId()));
+            return View(shoppingCartAppService.GetShoppingCartTicketsByUserId(User.Identity.GetUserId()));
         }
 
         // GET: ShoppingCart/Details/5
