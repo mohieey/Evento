@@ -178,6 +178,10 @@
     <Compile Include="Migrations\202103232327199_orderTicket.Designer.cs">
       <DependentUpon>202103232327199_orderTicket.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202103240719177_addedPriceInEvent.cs" />
+    <Compile Include="Migrations\202103240719177_addedPriceInEvent.Designer.cs">
+      <DependentUpon>202103240719177_addedPriceInEvent.cs</DependentUpon>
+    </Compile>
     <Compile Include="OrderTicket.cs" />
     <Compile Include="ShoppingCart.cs" />
     <Compile Include="ShoppingCartTicket.cs" />
@@ -263,6 +267,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202103232327199_orderTicket.resx">
       <DependentUpon>202103232327199_orderTicket.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103240719177_addedPriceInEvent.resx">
+      <DependentUpon>202103240719177_addedPriceInEvent.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

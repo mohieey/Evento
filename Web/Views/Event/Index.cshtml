@@ -137,7 +137,7 @@
                     bgClass = "bg-info";
                     break;
                 case Enum_Category.Cultural:
-                    bgClass = "bg-light";
+                    bgClass = "bg-warning";
                     break;
                 case Enum_Category.Educational:
                     bgClass = "bg-secondary";
@@ -156,10 +156,14 @@
             <div class="card @bgClass table-bordered" style="height: 400px; width: 18rem;">
                 <img class="card-img-top" src="~/Content/@e.image" alt="Event Image" style="max-height:200px">
                 <div class="card-body">
-                    <h5 class="card-title text-white">@e.Name</h5>
-                    <p class="card-text text-white">@e.description</p>
                     <div class="d-flex justify-content-between">
-                        @if (e.Host!=null && e.Host.Id == User.Identity.GetUserId())
+                        <h5 class="card-title text-dark font-weight-bold">@e.Name</h5>
+                        <h5 class="card-title text-dark font-weight-bold ml-auto">@e.price$</h5>
+                    </div>
+                    <p class="card-text text-dark" style="height:80px; overflow-y:auto">@e.description</p>
+
+                    <div class="d-flex justify-content-between" style="margin-top:10px">
+                        @if (e.Host != null && e.Host.Id == User.Identity.GetUserId())
                         {
                             @Html.ActionLink("Edit", "EditEvent", "Event", e, new { @class = "btn btn-primary" })
                         }
@@ -167,7 +171,7 @@
                         {
                             @Html.ActionLink("Book ticket", "AddTicket", "ShoppingCart", new { eventId = e.ID }, new { @class = "btn btn-primary" });
                         }
-                        @Html.ActionLink("Details", "Details", new { id = e.ID }, new { @class = "btn btn-primary" });
+                        @Html.ActionLink("Details", "Details", new { id = e.ID }, new { @class = "btn btn-primary ml-auto" })
                     </div>
                 </div>
             </div>

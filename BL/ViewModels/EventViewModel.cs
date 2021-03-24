@@ -15,34 +15,37 @@ namespace BL.ViewModels
         [HiddenInput(DisplayValue = false)]
         public int ID { get; set; }
 
-
-
         [HiddenInput(DisplayValue = false)]
         public string HostId { get; set; }
-        public virtual HostUser Host { get; set; }
+        public HostUser Host { get; set; }
 
         [Required]
         [MinLength(4)]
         public string Name { get; set; }
 
         [Required]
+        [Display(Name = "Date")]
         public DateTime date { get; set; }
 
 
 
         [Required]
+        [Display(Name = "Age")]
         public Enum_Age age { get; set; }
 
         //[Required]
+        [Display(Name = "Category")]
         public Enum_Category category { get; set; }
 
         [Required]
+        [Display(Name = "Total Available Tickets")]
         public int TotalAvailableTickets { get; set; }
 
-        [Display(Name ="Canceled?")]
-        public bool isCanceled { get; set; }
-
         public string image { get; set; }
+
+        [Required]
+        [Display(Name = "Price")]
+        public int price { get; set; }
 
         [Required]
         public string description { get; set; }

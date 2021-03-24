@@ -125,9 +125,10 @@ namespace Web.Controllers
                     image = eventAppService.GetEventById(editEvent.ID).image;
                 }
                 editEvent.image = image;
+                //editEvent.HostId = User.Identity.GetUserId();
                 editEvent = eventAppService.EditEvent(editEvent);
 
-                return View("Index");
+                return RedirectToAction("Index");
             }
             else
             {

@@ -45,7 +45,7 @@ namespace BL.Repositories
 
         public Event GetEventById(int id)
         {
-            return GetFirstOrDefault(e => e.ID == id);
+            return GetAll().Include(e=> e.Host).Where(e => e.ID == id).FirstOrDefault();
         }
     }
 }

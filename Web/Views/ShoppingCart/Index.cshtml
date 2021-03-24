@@ -5,6 +5,7 @@
 
 <h2>My Cart</h2>
 <div class="container">
+    @{int totalPrice = 0; }
     @{ foreach (var sct in Model)
         {
 
@@ -13,10 +14,10 @@
                 @sct.ticket.Event.Name for <strong>@sct.ticket.price</strong>
             </div>
 
+            totalPrice += @sct.ticket.price;
         }
     }
-
-    @*<p class="display-4" style="font-size:35px;">Total = @Model.totalPrice </p>*@
+    <p class="display-4" style="font-size:35px;">Total = @totalPrice </p>
     @Html.ActionLink("Check Out", "CheckOut", "ShoppingCart", Model, new { @class = "btn btn-secondary " })
 
 </div>
