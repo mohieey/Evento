@@ -17,6 +17,7 @@ namespace BL.Interfaces
         HostAccountRepository Host { get; }
         ClientAccountRepository Client { get; }
         ShoppingCartRepository ShoppingCart { get; }
+        ShoppingCartTicketsRepository ShoppingCartTicket { get; }
 
 
         int Commit();

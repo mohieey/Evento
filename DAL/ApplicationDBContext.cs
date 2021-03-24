@@ -21,7 +21,6 @@ namespace DAL
                 return _applicationDBContext;
             }
         }
-      
 
         public ApplicationDBContext() :
             base("Data Source =.; Initial Catalog = Evento; Integrated Security = True")
@@ -33,9 +32,8 @@ namespace DAL
         public virtual DbSet<Event> Events { get; set; }
         public virtual DbSet<HostUser> HostUsers { get; set; }
         public virtual DbSet<ClientUser> ClientUsers { get; set; }
+        public virtual DbSet<ShoppingCart> ShoppingCarts { get; set; }
+        public virtual DbSet<ShoppingCartTicket> ShoppingCartTickets { get; set; }
 
     }
-
-
-
 }

@@ -50,7 +50,7 @@ namespace Web.Controllers
                 return Content("Out Of Stock");
             }
             Ticket ticket = ticketAppService.CreateTicket(_event);
-            ticket.clientId = User.Identity.GetUserId();
+            //ticket.clientId = User.Identity.GetUserId();
             return RedirectToAction("AddTicketToCart", "ShoppingCart", new RouteValueDictionary(ticket));
 
 

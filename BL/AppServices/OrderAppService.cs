@@ -1,5 +1,8 @@
 ﻿using BL.Bases;
+using BL.Repositories;
 using BL.ViewModels;
+using DAL;
+using DAL.User;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,6 +21,19 @@ namespace BL.AppServices
         public OrderViewModel GetOrderById(int id)
         {
             return Mapper.Map<OrderViewModel>(TheUnitOfWork.Order.GetOrderById(id));
+        }
+
+        public Order InsertOrder(string id)
+        {
+            ClientAccountRepository clientRepo = new ClientAccountRepository(ApplicationDBContext.applicationDBContext);
+            ClientUser client = clientRepo.GetClientById(id);
+
+            Order newOrder = new Order { clientId = client.Id };
+
+            TheUnitOfWork.Order.Insert(newOrder);
+
+            TheUnitOfWork.Commit();
+            return newOrder;
         }
 
         //public List<OrderViewModel> GetOrdersByClientId(string id)

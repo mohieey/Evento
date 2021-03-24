@@ -7,13 +7,13 @@ namespace DAL.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.0-30225")]
-    public sealed partial class a7eh : IMigrationMetadata
+    public sealed partial class requiredrequiredrequiredrequiredrequired : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(a7eh));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(requiredrequiredrequiredrequiredrequired));
         
         string IMigrationMetadata.Id
         {
-            get { return "202103231723332_a7eh"; }
+            get { return "202103232202296_requiredrequiredrequiredrequiredrequired"; }
         }
         
         string IMigrationMetadata.Source

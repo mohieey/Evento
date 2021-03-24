@@ -12,13 +12,11 @@ namespace DAL
     public class ShoppingCart
     {
         public int ID { get; set; }
-        public int totalPrice { get; set; }
-       // public string ClientId { get; set; }
+        public string ClientId { get; set; }
 
+        [ForeignKey("ClientId")]
+        public virtual ClientUser Client { get; set; }
 
-        //[Required]
-        //[ForeignKey("ClientId")]
-        //public virtual ClientUser Client { get; set; }
-        public virtual List<Ticket> Tickets { get; set; }
+        public virtual List<ShoppingCartTicket> ShoppingCartTickets { get; set; }
     }
 }

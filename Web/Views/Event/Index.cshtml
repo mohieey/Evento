@@ -153,39 +153,47 @@
                     break;
             }
 
-            <div class="card @bgClass table-bordered" style="width: 18rem;">
+            <div class="card @bgClass table-bordered" style="height: 400px; width: 18rem;">
                 <img class="card-img-top" src="~/Content/@e.image" alt="Event Image" style="max-height:200px">
                 <div class="card-body">
                     <h5 class="card-title text-white">@e.Name</h5>
                     <p class="card-text text-white">@e.description</p>
                     <div class="d-flex justify-content-between">
-                        @Html.ActionLink("Book ticket", "Details", new { id = e.ID }, new { @class = "btn btn-primary" })
+                        @if (e.Host!=null && e.Host.Id == User.Identity.GetUserId())
+                        {
+                            @Html.ActionLink("Edit", "EditEvent", "Event", e, new { @class = "btn btn-primary" })
+                        }
+                        @if (User.IsInRole("User"))
+                        {
+                            @Html.ActionLink("Book ticket", "AddTicket", "ShoppingCart", new { eventId = e.ID }, new { @class = "btn btn-primary" });
+                        }
                         @Html.ActionLink("Details", "Details", new { id = e.ID }, new { @class = "btn btn-primary" });
-                        @*@Html.ActionLink("Book", "Create", "Ticket", e , new { @class = "btn btn-primary" })*@
+                    </div>
+                </div>
             </div>
 
 
             @*<div class="card @bgClass" style="height:290px;">
-                <div class="card-body text-center">
+                    <div class="card-body text-center">
 
-                    @if (e.Host.Id == User.Identity.GetUserId())
-                    {
-                        <p class="btn btn-light">
-                            @Html.ActionLink("Edit", "EditEvent", "Event", e, new { @class = "" })
+                        @if (e.Host.Id == User.Identity.GetUserId())
+                        {
+                            <p class="btn btn-light">
+                                @Html.ActionLink("Edit", "EditEvent", "Event", e, new { @class = "" })
+                            </p>
+                        }
+
+                        <p class="card-text display-3 text-white" style="font-size:larger">
+                            @Html.ActionLink(e.Name, "Details", "Event", e, new { @class = "text-white" })
+
                         </p>
-                    }
+                        <p class="card-text display-4 text-white" style="font-size:medium">@e.location</p>
+                        <p class="card-text display-4 text-white" style="font-size:medium">@e.category</p>
+                        <p class="card-text display-4 text-white" style="font-size:medium">@e.age</p>
+                        <p class="card-text display-4 text-white" style="font-size:medium">@e.Host.user.UserName</p>
 
-                    <p class="card-text display-3 text-white" style="font-size:larger">
-                        @Html.ActionLink(e.Name, "Details", "Event", e, new { @class = "text-white" })
-
-                    </p>
-                    <p class="card-text display-4 text-white" style="font-size:medium">@e.location</p>
-                    <p class="card-text display-4 text-white" style="font-size:medium">@e.category</p>
-                    <p class="card-text display-4 text-white" style="font-size:medium">@e.age</p>
-                    <p class="card-text display-4 text-white" style="font-size:medium">@e.Host.user.UserName</p>
-
-                </div>
-            </div>*@
+                    </div>
+                </div>*@
 
 
         }

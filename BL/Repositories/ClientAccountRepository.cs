@@ -20,8 +20,6 @@ namespace BL.Repositories
 
         public ClientUser AddAsAClient(ClientUser client)
         {
-            client.shoppingCart = new ShoppingCart();
-
             ClientUser newClient = _DbContext.ClientUsers.Add(client);
 
             _DbContext.SaveChanges();
@@ -31,7 +29,8 @@ namespace BL.Repositories
 
         public ClientUser GetClientById(string id)
         {
-            return _DbContext.ClientUsers.Include(c=>c.shoppingCart).SingleOrDefault(c=>c.Id==id);
+            //return _DbContext.ClientUsers.Include(c=>c.shoppingCart).SingleOrDefault(c=>c.Id==id);
+            return _DbContext.ClientUsers.SingleOrDefault(c=>c.Id==id);
         }
     }
 }

@@ -127,11 +127,11 @@ namespace Web.Controllers
                 editEvent.image = image;
                 editEvent = eventAppService.EditEvent(editEvent);
 
-                return View(editEvent);
+                return View("Index");
             }
             else
             {
-                return View("Index");
+                return View(editEvent);
             }
         }
 

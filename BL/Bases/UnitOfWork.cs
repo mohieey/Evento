@@ -117,5 +117,17 @@ namespace BL.Bases
                 return shoppingCart;
             }
         }
+
+        private ShoppingCartTicketsRepository shoppingCartTicket;
+        public ShoppingCartTicketsRepository ShoppingCartTicket
+        {
+            get
+            {
+                if (shoppingCartTicket == null)
+                    shoppingCartTicket = new ShoppingCartTicketsRepository(DbContext);
+                return shoppingCartTicket;
+            }
+        }
+        
     }
 }
