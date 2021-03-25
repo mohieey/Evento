@@ -22,8 +22,10 @@ namespace Web.Controllers
         {
             if (!(eventName is null))
             {
-                return View("Index", eventAppService.GetAllEvents().Where(e => e.Name.Contains(eventName)).ToList().ToPagedList(page ?? 1, 9));
-
+                return View("Index", eventAppService.GetAllEvents()
+                                                    .Where(e => e.Name
+                                                    .Contains(eventName))
+                                                    .ToList().ToPagedList(page ?? 1, 9));
             }
 
             return View(eventAppService.GetAllEvents().ToPagedList(page ?? 1, 9));
@@ -78,44 +80,76 @@ namespace Web.Controllers
 
         [HttpPost]
         [Authorize(Roles = "Host")]
-        public ActionResult CreateEvent(EventViewModel newEvent)
+        public ActionResult CreateEvent(EventViewModel newEvent, HttpPostedFileBase file)
         {
+            ViewBag.ImageError = null;
+            if (!ModelState.IsValid || file == null)
+            {
+                if (file == null)
+                    ViewBag.ImageError = "Please add an image for the event.";
+                return View(newEvent);
+            }
+
+            var image = System.IO.Path.GetFileName(file.FileName);
+            file.SaveAs(Server.MapPath("~/Content/" + image));
+            newEvent.image = image;
+
             AccountAppService accountAppService = new AccountAppService();
             newEvent.HostId = User.Identity.GetUserId();
-
-            if (ModelState.IsValid == false)
-                return View(newEvent);
 
             eventAppService.SaveNewEvent(newEvent);
             return RedirectToAction("Index");
         }
 
-
+        [Authorize(Roles = "Host")]
+        public ActionResult EditEvent(int id)
+        {
+            return View(eventAppService.GetEventById(id));
+        }
         
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         [Authorize(Roles = "Host")]
-        public ActionResult EditEvent(EventViewModel editEvent)
+        public ActionResult EditEvent(EventViewModel editEvent, HttpPostedFileBase file)
         {
-            return View("EditEvent", editEvent);
+            if (ModelState.IsValid)
+            {
+                string image;
+                if (file != null)
+                {
+                    image = System.IO.Path.GetFileName(file.FileName);
+                    file.SaveAs(Server.MapPath("~/Content/" + image));
+                }
+                else
+                {
+                    image = eventAppService.GetEventById(editEvent.ID).image;
+                }
+                editEvent.image = image;
+                //editEvent.HostId = User.Identity.GetUserId();
+                editEvent = eventAppService.EditEvent(editEvent);
+
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View(editEvent);
+            }
         }
 
 
-        [Authorize(Roles = "Host")]
-        public ActionResult SaveChanges(EventViewModel editEvent)
-        {
+        //[Authorize(Roles = "Host")]
+        //public ActionResult SaveChanges(EventViewModel editEvent)
+        //{
             
-            eventAppService.SaveEventChanges(editEvent);
+        //    eventAppService.SaveEventChanges(editEvent);
    
-            return RedirectToAction("Index");
-        }
-
+        //    return RedirectToAction("Index");
+        //}
 
 
         [Authorize]
         public ActionResult Details(int id)
         {
-
-       
-
             return View(eventAppService.GetEventById(id));
         }
     }

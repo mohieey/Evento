@@ -11,19 +11,19 @@ namespace BL.AppServices
 {
     public class TicketAppService : BaseAppService
     {
-        public List<TicketViewModel> GetAllTickets()
+        public List<Ticket> GetAllTickets()
         {
-            return Mapper.Map<List<TicketViewModel>>(TheUnitOfWork.Ticket.GetAllTickets());
+            return Mapper.Map<List<Ticket>>(TheUnitOfWork.Ticket.GetAllTickets());
         }
-        public TicketViewModel CreateTicket(TicketViewModel ticketViewModel)
+        public Ticket CreateTicket(Event @event)
         {
-            Ticket newTicket = Mapper.Map<Ticket>(ticketViewModel);
-            return Mapper.Map<TicketViewModel>(TheUnitOfWork.Ticket.InsertTicket(newTicket));
+            Ticket newTicket = new Ticket() { eventId = @event.ID };
+            return newTicket;
         }
 
-        public void UpdateTicket(TicketViewModel ticketViewModel)
+        public void UpdateTicket(Ticket Ticket)
         {
-            Ticket ticket = Mapper.Map<Ticket>(ticketViewModel);
+            Ticket ticket = Mapper.Map<Ticket>(Ticket);
             TheUnitOfWork.Ticket.UpdateTicket(ticket);
         }
 
@@ -32,15 +32,15 @@ namespace BL.AppServices
             TheUnitOfWork.Ticket.DeleteTicket(id);
         }
 
-        public TicketViewModel CheckTicketExists(TicketViewModel ticketViewModel)
+        public Ticket CheckTicketExists(Ticket Ticket)
         {
-            Ticket ticket = Mapper.Map<Ticket>(ticketViewModel);
-            return Mapper.Map<TicketViewModel>(TheUnitOfWork.Ticket.CheckTicketExists(ticket));
+            Ticket ticket = Mapper.Map<Ticket>(Ticket);
+            return Mapper.Map<Ticket>(TheUnitOfWork.Ticket.CheckTicketExists(ticket));
         }
 
-        public TicketViewModel GetTicketById(int id)
+        public Ticket GetTicketById(int id)
         {
-            return Mapper.Map<TicketViewModel>(TheUnitOfWork.Ticket.GetTicketById(id));
+            return Mapper.Map<Ticket>(TheUnitOfWork.Ticket.GetTicketById(id));
         }
     }
 }

@@ -22,9 +22,14 @@ namespace BL.Repositories
 
         public ShoppingCart GetShoppingCartByUserId(string Id)
         {
-            ClientAccountRepository clientRepo = new ClientAccountRepository(_DbContext);
-            ClientUser client = clientRepo.GetClientById(Id);
-            return client.shoppingCart;
+            //ClientAccountRepository clientRepo = new ClientAccountRepository(_DbContext);
+            //ClientUser client = clientRepo.GetClientById(Id);
+            //return client.shoppingCart;
+
+            return GetWhere(s => s.ClientId == Id)
+                .Include(s => s.ShoppingCartTickets)
+                .FirstOrDefault();
+
         }
 
         //public Ticket InsertTicket(Ticket ticket)

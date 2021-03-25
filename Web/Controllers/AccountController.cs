@@ -15,6 +15,7 @@ namespace Web.Controllers
     public class AccountController : Controller
     {
         AccountAppService accountAppService = new AccountAppService();
+        ShoppingCartAppService ShoppingCartAppService = new ShoppingCartAppService();
         // GET: Account
         public ActionResult Index()
         {
@@ -37,26 +38,30 @@ namespace Web.Controllers
             IdentityResult result = accountAppService.Register(newUser, isHost, User.IsInRole("Admin"));
             if (result.Succeeded)
             {
-                IAuthenticationManager owinMAnager = HttpContext.GetOwinContext().Authentication;
+                //IAuthenticationManager owinMAnager = HttpContext.GetOwinContext().Authentication;
 
-                var signinmanager = new SignInManager<ApplicationIdentityUser, string>(
-                        new ApplicationUserManager(), owinMAnager
-                        );
-                ApplicationIdentityUser identityUser = accountAppService.Find(newUser.UserName, newUser.PasswordHash);
-                signinmanager.SignIn(identityUser, true, true);
+                //var signinmanager = new SignInManager<ApplicationIdentityUser, string>(
+                //        new ApplicationUserManager(), owinMAnager
+                //        );
+                //ApplicationIdentityUser identityUser = accountAppService.Find(newUser.UserName, newUser.PasswordHash);
+                //signinmanager.SignIn(identityUser, true, true);
 
                 //accountAppService.AssignToRole(identityUser.Id, "Admin");
+                ApplicationIdentityUser registeredUser = accountAppService.Find(newUser.UserName, newUser.PasswordHash);
 
                 if (User.IsInRole("Admin"))
-                    accountAppService.AssignToRole(identityUser.Id, "Admin");
+                    accountAppService.AssignToRole(registeredUser.Id, "Admin");
                 else
                 {
                     if (isHost)
-                        accountAppService.AssignToRole(identityUser.Id, "Host");
+                        accountAppService.AssignToRole(registeredUser.Id, "Host");
                     else
-                        accountAppService.AssignToRole(identityUser.Id, "User");
+                    {
+                        accountAppService.AssignToRole(registeredUser.Id, "User");
+                        ShoppingCartAppService.Insert(registeredUser.Id);
+                    }
                 }
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Login");
             }
             else
             {

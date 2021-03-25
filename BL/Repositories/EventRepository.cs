@@ -20,7 +20,7 @@ namespace BL.Repositories
 
         public List<Event> GetAllEvents()
         {
-            return GetAll().Include(e => e.Host.user).ToList();
+            return GetAll().Include(e => e.Host).Include(e => e.Host.user).Include(e=>e.tickets).ToList();
         }
 
         public Event InsertEvent(Event @event)
@@ -45,7 +45,7 @@ namespace BL.Repositories
 
         public Event GetEventById(int id)
         {
-            return GetFirstOrDefault(e => e.ID == id);
+            return GetAll().Include(e=> e.Host).Where(e => e.ID == id).FirstOrDefault();
         }
     }
 }

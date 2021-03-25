@@ -16,12 +16,14 @@ namespace DAL
         public Enum_Category category { get; set; }
         public int TotalAvailableTickets { get; set; }
         public bool isCanceled { get; set; } = false;
+        public string image { get; set; }
+        public int price { get; set; }
 
         [ForeignKey("Host")]
         public string HostId { get; set; }
         public virtual HostUser Host { get; set; }
 
         public virtual string location { get; set; }
-        public virtual List<Ticket> tickets { get; set; }
+        public virtual List<Ticket> tickets { get; set; } = new List<Ticket>();
     }
 }

@@ -150,11 +150,41 @@
     <Compile Include="Migrations\202103211828501_addedShoppingCartIdInClientUser.Designer.cs">
       <DependentUpon>202103211828501_addedShoppingCartIdInClientUser.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202103221442442_addDateAndOrderInTicket.cs" />
-    <Compile Include="Migrations\202103221442442_addDateAndOrderInTicket.Designer.cs">
-      <DependentUpon>202103221442442_addDateAndOrderInTicket.cs</DependentUpon>
+    <Compile Include="Migrations\202103232034186_cleanUp.cs" />
+    <Compile Include="Migrations\202103232034186_cleanUp.Designer.cs">
+      <DependentUpon>202103232034186_cleanUp.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202103232040039_addingClientIdInOrder.cs" />
+    <Compile Include="Migrations\202103232040039_addingClientIdInOrder.Designer.cs">
+      <DependentUpon>202103232040039_addingClientIdInOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103232141089_addedshpcrt.cs" />
+    <Compile Include="Migrations\202103232141089_addedshpcrt.Designer.cs">
+      <DependentUpon>202103232141089_addedshpcrt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103232202296_requiredrequiredrequiredrequiredrequired.cs" />
+    <Compile Include="Migrations\202103232202296_requiredrequiredrequiredrequiredrequired.Designer.cs">
+      <DependentUpon>202103232202296_requiredrequiredrequiredrequiredrequired.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103232216029_MtoM.cs" />
+    <Compile Include="Migrations\202103232216029_MtoM.Designer.cs">
+      <DependentUpon>202103232216029_MtoM.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103232255319_removedTicketList.cs" />
+    <Compile Include="Migrations\202103232255319_removedTicketList.Designer.cs">
+      <DependentUpon>202103232255319_removedTicketList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103232327199_orderTicket.cs" />
+    <Compile Include="Migrations\202103232327199_orderTicket.Designer.cs">
+      <DependentUpon>202103232327199_orderTicket.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103240719177_addedPriceInEvent.cs" />
+    <Compile Include="Migrations\202103240719177_addedPriceInEvent.Designer.cs">
+      <DependentUpon>202103240719177_addedPriceInEvent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OrderTicket.cs" />
     <Compile Include="ShoppingCart.cs" />
+    <Compile Include="ShoppingCartTicket.cs" />
     <Compile Include="User\ApplicationIdentityUser.cs" />
     <Compile Include="User\ApplicationUserManager.cs" />
     <Compile Include="User\ApplicationUserStore.cs" />
@@ -217,8 +247,29 @@
     <EmbeddedResource Include="Migrations\202103211828501_addedShoppingCartIdInClientUser.resx">
       <DependentUpon>202103211828501_addedShoppingCartIdInClientUser.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202103221442442_addDateAndOrderInTicket.resx">
-      <DependentUpon>202103221442442_addDateAndOrderInTicket.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202103232034186_cleanUp.resx">
+      <DependentUpon>202103232034186_cleanUp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103232040039_addingClientIdInOrder.resx">
+      <DependentUpon>202103232040039_addingClientIdInOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103232141089_addedshpcrt.resx">
+      <DependentUpon>202103232141089_addedshpcrt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103232202296_requiredrequiredrequiredrequiredrequired.resx">
+      <DependentUpon>202103232202296_requiredrequiredrequiredrequiredrequired.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103232216029_MtoM.resx">
+      <DependentUpon>202103232216029_MtoM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103232255319_removedTicketList.resx">
+      <DependentUpon>202103232255319_removedTicketList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103232327199_orderTicket.resx">
+      <DependentUpon>202103232327199_orderTicket.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103240719177_addedPriceInEvent.resx">
+      <DependentUpon>202103240719177_addedPriceInEvent.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

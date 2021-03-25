@@ -6,13 +6,15 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Routing;
 using BL.AppServices;
 using BL.ViewModels;
 using DAL;
+using Microsoft.AspNet.Identity;
 
 namespace Web.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    //[Authorize(Roles = "Admin")]
     public class TicketController : Controller
     {
         TicketAppService ticketAppService = new TicketAppService();
@@ -23,41 +25,47 @@ namespace Web.Controllers
 
         public ActionResult Details(int id)
         {
-            TicketViewModel ticketViewModel = ticketAppService.GetTicketById(id);
-            if (ticketViewModel == null)
+            Ticket Ticket = ticketAppService.GetTicketById(id);
+            if (Ticket == null)
             {
                 return HttpNotFound();
             }
-            return View(ticketViewModel);
+            return View(Ticket);
         }
 
-        public ActionResult Create() => View();
+        //public ActionResult Create() => View();
 
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(TicketViewModel newTicket)
+
+
+        public ActionResult Create(Event _event)
         {
-            if (!ModelState.IsValid)
-                return View(newTicket);
+            //if (!ModelState.IsValid)
+            //    return View(newTicket);
 
-            try
+            //try
+            //{
+            if (_event.tickets.Count() == _event.TotalAvailableTickets)
             {
-                ticketAppService.CreateTicket(newTicket);
-                return RedirectToAction("Index");
+                return Content("Out Of Stock");
             }
-            catch(Exception ex)
-            {
-                ModelState.AddModelError("", ex.Message);
-                return View();
-            }
+            Ticket ticket = ticketAppService.CreateTicket(_event);
+            //ticket.clientId = User.Identity.GetUserId();
+            return RedirectToAction("AddTicketToCart", "ShoppingCart", new RouteValueDictionary(ticket));
+
+
+            //catch(Exception ex)
+            //{
+            //    ModelState.AddModelError("", ex.Message);
+            //    return View();
+            //}
 
         }
 
         //public ActionResult Edit(int id) => View();
 
         //[HttpPost]
-        //public ActionResult Edit(int id, TicketViewModel updateTicket)
+        //public ActionResult Edit(int id, Ticket updateTicket)
         //{
         //    if (!ModelState.IsValid)
         //        return View(updateTicket);
@@ -76,16 +84,16 @@ namespace Web.Controllers
 
         public ActionResult Delete(int id)
         {
-            TicketViewModel ticketViewModel = ticketAppService.GetTicketById(id);
-            if (ticketViewModel == null)
+            Ticket Ticket = ticketAppService.GetTicketById(id);
+            if (Ticket == null)
             {
                 return HttpNotFound();
             }
-            return View(ticketViewModel);
+            return View(Ticket);
         }
 
         [HttpPost]
-        public ActionResult Delete(int id, TicketViewModel ticketVM)
+        public ActionResult Delete(int id, Ticket ticketVM)
         {
             if (!ModelState.IsValid)
                 return View(ticketVM);
@@ -94,7 +102,7 @@ namespace Web.Controllers
                 ticketAppService.DeleteTicket(id);
                 return RedirectToAction("Index");
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 ModelState.AddModelError("", ex.Message);
                 return View();

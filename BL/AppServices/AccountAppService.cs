@@ -48,5 +48,11 @@ namespace BL.AppServices
         {
             return TheUnitOfWork.Account.GetUserById(id);
         }
+
+
+        public ClientUser GetClientByUserId(string Id)
+        {
+            return TheUnitOfWork.Client.GetClientById(Id);
+        }
     }
 }

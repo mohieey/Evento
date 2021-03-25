@@ -10,9 +10,9 @@ namespace DAL.User
         public string Id { get; set; }
         public virtual ApplicationIdentityUser user { get; set; }
 
-        [ForeignKey("shoppingCart")]
-        public int shoppingCartId { get; set; }
-        public virtual ShoppingCart shoppingCart { get; set; }
+        //[ForeignKey("shoppingCart")]
+        //public int shoppingCartId { get; set; }
+        //public virtual ShoppingCart shoppingCart { get; set; }
 
         public virtual ICollection<Order> orders { get; set; }
 

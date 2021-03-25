@@ -1,9 +1,9 @@
 ﻿namespace DAL
 {
-    public enum Enum_TicketClass
-    {
-        FirstClass,
-        SecondClass,
-        ThirdClass
-    }
+    //public enum Enum_TicketClass
+    //{
+    //    FirstClass,
+    //    SecondClass,
+    //    ThirdClass
+    //}
 }
