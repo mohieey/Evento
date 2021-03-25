@@ -7,7 +7,7 @@
     ViewBag.Title = "Events";
 }
 
-<button data-toggle="collapse" data-target="#demo" class="btn btn-info">Filter</button>
+<button data-toggle="collapse" data-target="#demo" class="btn btn-info my-3">Filter</button>
 
 <div id="demo" class="collapse">
 
@@ -15,7 +15,7 @@
     {
         <div class="form-group">
             @Html.Label("Name")
-            @Html.TextBox("eventName")
+            @Html.TextBox("eventName", null, new { @class = "form-control" })
             <button class="btn btn-outline-dark">Search By Name</button>
         </div>
     }
@@ -25,7 +25,7 @@
     {
         <div class="form-group">
             @Html.Label("Host Name")
-            @Html.TextBox("hostName")
+            @Html.TextBox("hostName",null, new { @class = "form-control" })
             <button class="btn btn-outline-dark">Search By Host Name</button>
         </div>
     }
@@ -46,7 +46,7 @@
                 }).ToList());
             }
 
-            @Html.DropDownList("category", itemsList, new { @class = "custom-select" })
+            @Html.DropDownList("category", itemsList, new { @class = "custom-select form-control" })
             <button class="btn btn-outline-dark">Show By Category</button>
 
         </div>
@@ -68,7 +68,7 @@
                 }).ToList());
             }
 
-            @Html.DropDownList("Age", itemsList)
+            @Html.DropDownList("Age", itemsList, new { @class = "custom-select form-control" })
             <button class="btn btn-outline-dark">Show By Age</button>
 
         </div>
