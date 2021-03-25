@@ -11,7 +11,7 @@ namespace DAL
     public class ApplicationRoleManager : RoleManager<IdentityRole>
     {
         public ApplicationRoleManager()
-            : base(new RoleStore<IdentityRole>(new ApplicationDBContext()))
+            : base(new RoleStore<IdentityRole>( ApplicationDBContext.applicationDBContext))
         {
 
         }

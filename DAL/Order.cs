@@ -1,5 +1,7 @@
-﻿using System;
+﻿using DAL.User;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DAL
 {
@@ -7,12 +9,13 @@ namespace DAL
     public class Order
     {
         public int ID { get; set; }
-        public DateTime date { get; set; }
         public int totalPrice { get; set; }
-        public int discount { get; set; }
 
-        public virtual List<Ticket> tickets { get; set; }
-        public virtual ApplicationIdentityUser appUser { get; set; }
+        [ForeignKey("Client")]
+        public string clientId { get; set; }
+        public virtual ClientUser Client { get; set; }
+
+        public virtual List<OrderTicket> OrderTickets { get; set; }
     }
 
 }

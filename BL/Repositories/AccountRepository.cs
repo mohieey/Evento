@@ -10,9 +10,9 @@ using System.Threading.Tasks;
 
 namespace BL.Repositories
 {
-    public class AccountRepository
+    public class AccountRepository 
     {
-        ApplicationUserManager manager;
+        protected ApplicationUserManager manager;
 
         public AccountRepository(DbContext db)
         {
@@ -35,6 +35,12 @@ namespace BL.Repositories
         {
             IdentityResult result = manager.AddToRole(userid, rolename);
             return result;
+        }
+
+
+        public ApplicationIdentityUser GetUserById(string id)
+        {
+            return manager.FindById(id);
         }
     }
 }

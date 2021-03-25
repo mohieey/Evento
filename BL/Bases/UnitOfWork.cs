@@ -16,7 +16,7 @@ namespace BL.Bases
 
         public UnitOfWork()
         {
-            DbContext = new ApplicationDBContext();
+            DbContext = ApplicationDBContext.applicationDBContext;
             DbContext.Configuration.LazyLoadingEnabled = false;
         }
 
@@ -82,6 +82,61 @@ namespace BL.Bases
                 if (@event == null)
                     @event = new EventRepository(DbContext);
                 return @event;
+            }
+        }
+
+        private HostAccountRepository host;
+        public HostAccountRepository Host
+        {
+            get
+            {
+                if (host == null)
+                    host = new HostAccountRepository(DbContext);
+                return host;
+            }
+        }
+
+        private ClientAccountRepository client;
+        public ClientAccountRepository Client
+        {
+            get
+            {
+                if (client == null)
+                    client = new ClientAccountRepository(DbContext);
+                return client;
+            }
+        }
+
+        private ShoppingCartRepository shoppingCart;
+        public ShoppingCartRepository ShoppingCart
+        {
+            get
+            {
+                if (shoppingCart == null)
+                    shoppingCart = new ShoppingCartRepository(DbContext);
+                return shoppingCart;
+            }
+        }
+
+        private ShoppingCartTicketsRepository shoppingCartTicket;
+        public ShoppingCartTicketsRepository ShoppingCartTicket
+        {
+            get
+            {
+                if (shoppingCartTicket == null)
+                    shoppingCartTicket = new ShoppingCartTicketsRepository(DbContext);
+                return shoppingCartTicket;
+            }
+        }
+
+        private OrderTicketRepository orderTicket;
+        public OrderTicketRepository OrderTicket
+        {
+            get
+            {
+                if (orderTicket == null)
+                    orderTicket = new OrderTicketRepository(DbContext);
+                return orderTicket;
             }
         }
     }

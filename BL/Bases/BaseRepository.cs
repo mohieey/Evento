@@ -144,5 +144,11 @@ namespace BL.Bases
             if (entity == null) return;
             Delete(entity);
         }
+
+        public virtual void RemoveRange(List<T> entities)
+        {
+            DbSet.RemoveRange(entities);
+        }
+
     }
 }

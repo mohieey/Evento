@@ -126,13 +126,71 @@
     <Compile Include="Migrations\202103191642465_addedNameToEvent.Designer.cs">
       <DependentUpon>202103191642465_addedNameToEvent.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202103201556000_removedLocation.cs" />
+    <Compile Include="Migrations\202103201556000_removedLocation.Designer.cs">
+      <DependentUpon>202103201556000_removedLocation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103201626499_changedEvent.cs" />
+    <Compile Include="Migrations\202103201626499_changedEvent.Designer.cs">
+      <DependentUpon>202103201626499_changedEvent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103201650542_resetevent.cs" />
+    <Compile Include="Migrations\202103201650542_resetevent.Designer.cs">
+      <DependentUpon>202103201650542_resetevent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103201850317_AddedHostClient.cs" />
+    <Compile Include="Migrations\202103201850317_AddedHostClient.Designer.cs">
+      <DependentUpon>202103201850317_AddedHostClient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103211435321_addedHostIdInEvent.cs" />
+    <Compile Include="Migrations\202103211435321_addedHostIdInEvent.Designer.cs">
+      <DependentUpon>202103211435321_addedHostIdInEvent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103211828501_addedShoppingCartIdInClientUser.cs" />
+    <Compile Include="Migrations\202103211828501_addedShoppingCartIdInClientUser.Designer.cs">
+      <DependentUpon>202103211828501_addedShoppingCartIdInClientUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103232034186_cleanUp.cs" />
+    <Compile Include="Migrations\202103232034186_cleanUp.Designer.cs">
+      <DependentUpon>202103232034186_cleanUp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103232040039_addingClientIdInOrder.cs" />
+    <Compile Include="Migrations\202103232040039_addingClientIdInOrder.Designer.cs">
+      <DependentUpon>202103232040039_addingClientIdInOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103232141089_addedshpcrt.cs" />
+    <Compile Include="Migrations\202103232141089_addedshpcrt.Designer.cs">
+      <DependentUpon>202103232141089_addedshpcrt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103232202296_requiredrequiredrequiredrequiredrequired.cs" />
+    <Compile Include="Migrations\202103232202296_requiredrequiredrequiredrequiredrequired.Designer.cs">
+      <DependentUpon>202103232202296_requiredrequiredrequiredrequiredrequired.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103232216029_MtoM.cs" />
+    <Compile Include="Migrations\202103232216029_MtoM.Designer.cs">
+      <DependentUpon>202103232216029_MtoM.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103232255319_removedTicketList.cs" />
+    <Compile Include="Migrations\202103232255319_removedTicketList.Designer.cs">
+      <DependentUpon>202103232255319_removedTicketList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103232327199_orderTicket.cs" />
+    <Compile Include="Migrations\202103232327199_orderTicket.Designer.cs">
+      <DependentUpon>202103232327199_orderTicket.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103240719177_addedPriceInEvent.cs" />
+    <Compile Include="Migrations\202103240719177_addedPriceInEvent.Designer.cs">
+      <DependentUpon>202103240719177_addedPriceInEvent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OrderTicket.cs" />
+    <Compile Include="ShoppingCart.cs" />
+    <Compile Include="ShoppingCartTicket.cs" />
     <Compile Include="User\ApplicationIdentityUser.cs" />
     <Compile Include="User\ApplicationUserManager.cs" />
     <Compile Include="User\ApplicationUserStore.cs" />
     <Compile Include="Role\ApplicationRoleManager.cs" />
     <Compile Include="Enums\Enum_Category.cs" />
     <Compile Include="Event.cs" />
-    <Compile Include="Location.cs" />
     <Compile Include="Migrations\202103161738114_initial.cs" />
     <Compile Include="Migrations\202103161738114_initial.Designer.cs">
       <DependentUpon>202103161738114_initial.cs</DependentUpon>
@@ -142,6 +200,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Ticket.cs" />
     <Compile Include="Enums\Enum_TicketClass.cs" />
+    <Compile Include="User\ClientUser.cs" />
+    <Compile Include="User\HostUser.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -168,6 +228,48 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202103191642465_addedNameToEvent.resx">
       <DependentUpon>202103191642465_addedNameToEvent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103201556000_removedLocation.resx">
+      <DependentUpon>202103201556000_removedLocation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103201626499_changedEvent.resx">
+      <DependentUpon>202103201626499_changedEvent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103201650542_resetevent.resx">
+      <DependentUpon>202103201650542_resetevent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103201850317_AddedHostClient.resx">
+      <DependentUpon>202103201850317_AddedHostClient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103211435321_addedHostIdInEvent.resx">
+      <DependentUpon>202103211435321_addedHostIdInEvent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103211828501_addedShoppingCartIdInClientUser.resx">
+      <DependentUpon>202103211828501_addedShoppingCartIdInClientUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103232034186_cleanUp.resx">
+      <DependentUpon>202103232034186_cleanUp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103232040039_addingClientIdInOrder.resx">
+      <DependentUpon>202103232040039_addingClientIdInOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103232141089_addedshpcrt.resx">
+      <DependentUpon>202103232141089_addedshpcrt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103232202296_requiredrequiredrequiredrequiredrequired.resx">
+      <DependentUpon>202103232202296_requiredrequiredrequiredrequiredrequired.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103232216029_MtoM.resx">
+      <DependentUpon>202103232216029_MtoM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103232255319_removedTicketList.resx">
+      <DependentUpon>202103232255319_removedTicketList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103232327199_orderTicket.resx">
+      <DependentUpon>202103232327199_orderTicket.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103240719177_addedPriceInEvent.resx">
+      <DependentUpon>202103240719177_addedPriceInEvent.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

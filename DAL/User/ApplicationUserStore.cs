@@ -6,7 +6,7 @@ namespace DAL
     
     public class ApplicationUserStore : UserStore<ApplicationIdentityUser>
     {
-        public ApplicationUserStore() : base(new ApplicationDBContext())
+        public ApplicationUserStore() : base(ApplicationDBContext.applicationDBContext)
         {
 
         }

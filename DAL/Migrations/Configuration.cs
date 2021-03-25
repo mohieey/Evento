@@ -29,24 +29,28 @@ namespace DAL.Migrations
             //    );
             //
 
-            //ApplicationRoleManager roleManager = new ApplicationRoleManager(context);
-            //roleManager.Create(new IdentityRole("Admin"));
-            //roleManager.Create(new IdentityRole("User"));
-            //roleManager.Create(new IdentityRole("Host"));
+            ApplicationRoleManager roleManager = new ApplicationRoleManager(context);
+            roleManager.Create(new IdentityRole("Admin"));
+            roleManager.Create(new IdentityRole("User"));
+            roleManager.Create(new IdentityRole("Host"));
 
-            //ApplicationIdentityUser user =
-            //    new ApplicationIdentityUser()
-            //    {
-            //        UserName = "Ahmed",
-            //        PasswordHash = "aaaaa",
-            //    };
-            //ApplicationUserManager manager = new ApplicationUserManager(context);
 
-            //user.PasswordHash = manager.PasswordHasher.HashPassword(user.PasswordHash);
+            ApplicationUserManager manager = new ApplicationUserManager(context);
 
-            //manager.Create(user);
+            var admin = manager.Find("admin", "admin");
+            if(admin == null)
+            {
+                ApplicationIdentityUser user =
+                    new ApplicationIdentityUser()
+                    {
+                        UserName = "admin",
+                        PasswordHash = "admin",
+                    };
 
-            //manager.AddToRole(user.Id, "Host");
+                user.PasswordHash = manager.PasswordHasher.HashPassword(user.PasswordHash);
+                manager.Create(user);
+                manager.AddToRole(user.Id, "Admin");
+            }
         }
     }
 }

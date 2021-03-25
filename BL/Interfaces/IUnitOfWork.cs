@@ -14,6 +14,11 @@ namespace BL.Interfaces
         OrderRepository Order { get; }
         EventRepository Event { get; }
         TicketRepository Ticket { get; }
+        HostAccountRepository Host { get; }
+        ClientAccountRepository Client { get; }
+        ShoppingCartRepository ShoppingCart { get; }
+        ShoppingCartTicketsRepository ShoppingCartTicket { get; }
+        OrderTicketRepository OrderTicket { get; }
 
 
         int Commit();

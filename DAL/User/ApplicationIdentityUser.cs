@@ -9,8 +9,5 @@ namespace DAL
         public string SSN { get; set; }
         public string address { get; set; }
         public Enum_Age age { get; set; }
-
-        public virtual List<Ticket> cart { get; set; }
-        public virtual List<Order> orders { get; set; }
     }
 }
