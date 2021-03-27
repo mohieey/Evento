@@ -1,0 +1,29 @@
+﻿@model IEnumerable<DAL.Order>
+
+@{
+    ViewBag.Title = "Orders";
+    Layout = "~/Views/Shared/_DashBoardLayout.cshtml";
+}
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col"></th>
+            <th scope="col">User</th>
+            <th scope="col">Total price</th>
+            <th scope="col">Tickets</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{ int counter = 1; }
+        @foreach (var order in Model)
+        {
+        <tr>
+            <th scope="row">@counter @{counter++;}</th>
+            <td>@order.Client.user.UserName</td>
+            <td>@order.totalPrice</td>
+            <td>@order.OrderTickets.Count</td>
+        </tr>
+        }
+    </tbody>
+</table>

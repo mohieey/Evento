@@ -1,0 +1,31 @@
+﻿@model IEnumerable<DAL.User.HostUser>
+
+@{
+    ViewBag.Title = "Hosts";
+    Layout = "~/Views/Shared/_DashBoardLayout.cshtml";
+}
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col"></th>
+            <th scope="col">Host</th>
+            <th scope="col">Email</th>
+            <th scope="col">SSN</th>
+            <th scope="col">Events</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{ int counter = 1; }
+        @foreach (var user in Model)
+        {
+        <tr>
+            <th scope="row">@counter @{counter++;}</th>
+            <td>@user.user.UserName</td>
+            <td>@user.user.Email</td>
+            <td>@user.user.SSN</td>
+            <td>@user.events.Count</td>
+        </tr>
+        }
+    </tbody>
+</table>

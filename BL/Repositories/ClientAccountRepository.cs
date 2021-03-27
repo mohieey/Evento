@@ -32,5 +32,10 @@ namespace BL.Repositories
             //return _DbContext.ClientUsers.Include(c=>c.shoppingCart).SingleOrDefault(c=>c.Id==id);
             return _DbContext.ClientUsers.SingleOrDefault(c=>c.Id==id);
         }
+
+        public List<ClientUser> GetAllClients()
+        {
+            return _DbContext.ClientUsers.Include(c=>c.orders).Include(c=>c.user).ToList();
+        }
     }
 }

@@ -28,5 +28,10 @@ namespace BL.Repositories
 
             return host;
         }
+
+        public List<HostUser> GetAllHosts()
+        {
+            return _DbContext.HostUsers.ToList();
+        }
     }
 }

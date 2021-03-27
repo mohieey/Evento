@@ -1,0 +1,36 @@
+﻿@model IEnumerable<BL.ViewModels.EventViewModel>
+
+@{
+    ViewBag.Title = "Events";
+    Layout = "~/Views/Shared/_DashBoardLayout.cshtml";
+}
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col"></th>
+            <th scope="col">Event</th>
+            <th scope="col">Category</th>
+            <th scope="col">image</th>
+            <th scope="col">price</th>
+            <th scope="col">Host</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @{ int counter = 1; }
+        @foreach (var _event in Model)
+        {
+        <tr style="line-height:90px">
+            <th scope="row">@counter @{counter++;}</th>
+            <td>@_event.Name</td>
+            <td>@_event.category</td>
+            <td>
+                <img src="~/Content/@_event.image" style="width:75px" />
+            </td>
+            <td>@_event.price</td>
+            <td>@_event.Host.user.UserName</td>
+        </tr>
+        }
+    </tbody>
+</table>

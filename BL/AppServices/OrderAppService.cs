@@ -13,6 +13,11 @@ namespace BL.AppServices
 {
     public class OrderAppService : BaseAppService
     {
+        public List<Order> GetOrders()
+        {
+            return TheUnitOfWork.Order.GetAllOrders();
+        }
+
         public List<OrderViewModel> GetAllOrder()
         {
             return Mapper.Map<List<OrderViewModel>>(TheUnitOfWork.Order.GetAllOrders());

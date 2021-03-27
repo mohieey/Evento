@@ -20,7 +20,7 @@ namespace BL.Repositories
 
         public List<Order> GetAllOrders()
         {
-            return GetAll().ToList();
+            return GetAll().Include(o => o.Client).Include(o=>o.Client.user).Include(o=>o.OrderTickets).ToList();
         }
 
         public Order InsertOrder(Order order)

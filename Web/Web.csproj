@@ -163,6 +163,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\EventController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
@@ -183,6 +184,12 @@
     <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Dashboard\chart-area-demo.js" />
+    <Content Include="Content\Dashboard\chart-bar-demo.js" />
+    <Content Include="Content\Dashboard\chart-pie-demo.js" />
+    <Content Include="Content\Dashboard\datatables-demo.js" />
+    <Content Include="Content\Dashboard\scripts.js" />
+    <Content Include="Content\Dashboard\styles.css" />
     <Content Include="Content\PagedList.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
@@ -330,6 +337,10 @@
     <Content Include="Views\Ticket\Index.cshtml" />
     <Content Include="Views\ShoppingCart\Index.cshtml" />
     <Content Include="Views\Shared\_DashBoardLayout.cshtml" />
+    <Content Include="Views\Admin\Clients.cshtml" />
+    <Content Include="Views\Admin\Hosts.cshtml" />
+    <Content Include="Views\Admin\Events.cshtml" />
+    <Content Include="Views\Admin\Orders.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
