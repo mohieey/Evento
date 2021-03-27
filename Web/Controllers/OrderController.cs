@@ -42,7 +42,7 @@ namespace Web.Controllers
              * edit, details user
              */
 
-            return Content("asdvasjdva df");
+            return View("receipt",newOrder);
         }
     }
 }

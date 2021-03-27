@@ -19,10 +19,14 @@
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
-    <IISExpressSSLPort>44348</IISExpressSSLPort>
-    <IISExpressAnonymousAuthentication>enabled</IISExpressAnonymousAuthentication>
-    <IISExpressWindowsAuthentication>disabled</IISExpressWindowsAuthentication>
-    <IISExpressUseClassicPipelineMode>false</IISExpressUseClassicPipelineMode>
+    <IISExpressSSLPort>
+    </IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication>
+    </IISExpressAnonymousAuthentication>
+    <IISExpressWindowsAuthentication>
+    </IISExpressWindowsAuthentication>
+    <IISExpressUseClassicPipelineMode>
+    </IISExpressUseClassicPipelineMode>
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
@@ -339,6 +343,7 @@
     <Content Include="Views\Ticket\Index.cshtml" />
     <Content Include="Views\ShoppingCart\Index.cshtml" />
     <Content Include="Views\Shared\_DashBoardLayout.cshtml" />
+    <Content Include="Views\Order\receipt.cshtml" />
     <Content Include="Views\ClientUser\Details.cshtml" />
     <Content Include="Views\ClientUser\Edit.cshtml" />
     <Content Include="Views\ClientUser\Index.cshtml" />
@@ -354,7 +359,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
     <Folder Include="Views\DashBoard\" />
-    <Folder Include="Views\Order\" />
     <Folder Include="Views\Roles\" />
   </ItemGroup>
   <ItemGroup>

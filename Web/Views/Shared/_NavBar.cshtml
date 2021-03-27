@@ -1,4 +1,6 @@
-﻿<div class="container">
+﻿@using Microsoft.AspNet.Identity;
+
+<div class="container">
     @*<nav class="navbar navbar-expand-lg navbar-light bg-light">
             <a class="navbar-brand" href="#">Navbar</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -157,26 +159,38 @@
                     </li>
                 }
 
-                    @if (User.Identity.IsAuthenticated)
-                    {
-                        <li class="nav-item ml-auto">
-                            @Html.ActionLink("Logout", "Logout", "Account", null, new { @class = "nav-link" })
-                        </li>
-                    }
-                    @if (!User.Identity.IsAuthenticated)
-                    {
-                        <li class="nav-item ml-auto">
-                            @Html.ActionLink("Register", "Register", "Account", null, new { @class = "nav-link" })
-                        </li>
+                @if (User.IsInRole("User"))
+                {
+                    <a  href=@Url.Action("Index", "ShoppingCart") type="button" class="btn btn-secondary">
+                        My Cart <span class="badge badge-light">
+                            @{
+                                BL.AppServices.ShoppingCartAppService shoppingcartservice = new BL.AppServices.ShoppingCartAppService();
+                                var counter = shoppingcartservice.GetShoppingCartTicketsByUserId(User.Identity.GetUserId()).Count();
+                            }
+                            @counter
+                        </span>
+                    </a>
+                }
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <li class="nav-item ml-auto">
+                        @Html.ActionLink("Logout", "Logout", "Account", null, new { @class = "nav-link" })
+                    </li>
+                }
+                @if (!User.Identity.IsAuthenticated)
+                {
+                    <li class="nav-item ml-auto">
+                        @Html.ActionLink("Register", "Register", "Account", null, new { @class = "nav-link" })
+                    </li>
 
-                    }
-                    @if (!User.Identity.IsAuthenticated)
-                    {
-                        <li class="nav-item align-self-end">
-                            @Html.ActionLink("Login", "Login", "Account", null, new { @class = "nav-link" })
-                        </li>
-                    }
-                </ul>
+                }
+                @if (!User.Identity.IsAuthenticated)
+                {
+                    <li class="nav-item align-self-end">
+                        @Html.ActionLink("Login", "Login", "Account", null, new { @class = "nav-link" })
+                    </li>
+                }
+            </ul>
             @*<form class="form-inline my-2 my-lg-0">
                     <input class="form-control mr-sm-2" type="text" placeholder="Search">
                     <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
