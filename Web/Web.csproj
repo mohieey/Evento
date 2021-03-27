@@ -163,8 +163,10 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ClientUserController.cs" />
     <Compile Include="Controllers\EventController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\HostUserController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\RolesController.cs" />
     <Compile Include="Controllers\ShoppingCartController.cs" />
@@ -330,6 +332,12 @@
     <Content Include="Views\Ticket\Index.cshtml" />
     <Content Include="Views\ShoppingCart\Index.cshtml" />
     <Content Include="Views\Shared\_DashBoardLayout.cshtml" />
+    <Content Include="Views\ClientUser\Details.cshtml" />
+    <Content Include="Views\ClientUser\Edit.cshtml" />
+    <Content Include="Views\ClientUser\Index.cshtml" />
+    <Content Include="Views\HostUser\Index.cshtml" />
+    <Content Include="Views\HostUser\Details.cshtml" />
+    <Content Include="Views\HostUser\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

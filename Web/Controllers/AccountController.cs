@@ -49,6 +49,9 @@ namespace Web.Controllers
                 //accountAppService.AssignToRole(identityUser.Id, "Admin");
                 ApplicationIdentityUser registeredUser = accountAppService.Find(newUser.UserName, newUser.PasswordHash);
 
+                //accountAppService.AssignToRole(registeredUser.Id, "User");
+
+
                 if (User.IsInRole("Admin"))
                     accountAppService.AssignToRole(registeredUser.Id, "Admin");
                 else
