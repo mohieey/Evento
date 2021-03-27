@@ -51,6 +51,71 @@ namespace DAL.Migrations
                 manager.Create(user);
                 manager.AddToRole(user.Id, "Admin");
             }
+
+            //User For Unit Testing
+            var testUser = manager.Find("TestUser", "TestUser");
+            if (testUser == null)
+            {
+                ApplicationIdentityUser user =
+                    new ApplicationIdentityUser()
+                    {
+                        UserName = "TestUser",
+                        PasswordHash = "TestUser",
+                    };
+
+                user.PasswordHash = manager.PasswordHasher.HashPassword(user.PasswordHash);
+                manager.Create(user);
+                manager.AddToRole(user.Id, "User");
+
+                ApplicationIdentityUser registeredUser = manager.Find("TestUser", "TestUser");
+                context.ClientUsers.Add(new User.ClientUser { Id = registeredUser.Id });
+                context.ShoppingCarts.Add(new ShoppingCart { ClientId = registeredUser.Id });
+                context.SaveChanges();
+            }
+
+            //Host For Unit Testing
+            var testHost = manager.Find("TestHost", "TestHost");
+            if (testHost == null)
+            {
+                ApplicationIdentityUser user =
+                    new ApplicationIdentityUser()
+                    {
+                        UserName = "TestHost",
+                        PasswordHash = "TestHost",
+                    };
+
+                user.PasswordHash = manager.PasswordHasher.HashPassword(user.PasswordHash);
+                manager.Create(user);
+                manager.AddToRole(user.Id, "Host");
+                ApplicationIdentityUser registeredUser = manager.Find("TestHost", "TestHost");
+
+                context.HostUsers.Add(new User.HostUser { Id = registeredUser.Id });
+                context.SaveChanges();
+            }
+
+
+
+
+
+
+            //AccountAppService accountAppService = new AccountAppService();
+            //shoppingCartAppService = new ShoppingCartAppService();
+
+
+            //RegisterViewModel newUser = new RegisterViewModel
+            //{
+            //    UserName = "NewUserForTesting",
+            //    Email = "test@test.com",
+            //    PasswordHash = "123456",
+            //    ConfirmPassword = "123456",
+            //    age = Enum_Age.Under16,
+            //    SSN = "123456789"
+            //};
+
+            //IdentityResult result = accountAppService.Register(newUser, false, false);
+            //ApplicationIdentityUser registeredUser = accountAppService.Find(newUser.UserName, newUser.PasswordHash);
+            //accountAppService.AssignToRole(registeredUser.Id, "User");
+            //shoppingCartAppService.Insert(registeredUser.Id);
         }
     }
 }

@@ -13,7 +13,7 @@ namespace BL.AppServices
     {
         public List<HostUserViewModel> GetAllHostUser()
         {
-            List<HostUser> HostUsers = TheUnitOfWork.Host.GetAllHostUser();
+            List<HostUser> HostUsers = TheUnitOfWork.Host.GetAllHosts();
             List<HostUserViewModel> clientUserViews = new List<HostUserViewModel>();
             foreach (var HostUser in HostUsers)
             {
