@@ -1,9 +1,7 @@
 ﻿using BL.AppServices;
-using BL.ViewModels;
 using DAL;
 using Microsoft.AspNet.Identity;
 using NUnit.Framework;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

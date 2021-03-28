@@ -50,7 +50,7 @@
             totalPrice += @sct.ticket.Event.price;
         }
     }
-    <p class="display-4" style="font-size:35px;">Total = @totalPrice </p>
+    <p class="display-4" style="font-size:35px;">Total = @totalPrice L.E.</p>
     @if (!(Model.Count() == 0))
     {
         @Html.ActionLink("Check Out", "Create", "Order", new { totalPrice = totalPrice }, new { @class = "btn btn-secondary " })
