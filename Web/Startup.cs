@@ -21,6 +21,8 @@ namespace Web
                 ExpireTimeSpan = TimeSpan.FromDays(1),
                 LoginPath = new PathString("/Account/Login")
             });
+
+            app.MapSignalR();
         }
     }
 }
