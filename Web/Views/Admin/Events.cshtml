@@ -23,7 +23,9 @@
         {
         <tr style="line-height:90px">
             <th scope="row">@counter @{counter++;}</th>
-            <td>@_event.Name</td>
+            <td>
+                @Html.ActionLink(_event.Name, "Details", "Event", new { id = _event.ID }, new { @class = "nav-link" })
+            </td>
             <td>@_event.category</td>
             <td>
                 <img src="~/Content/@_event.image" style="width:75px" />

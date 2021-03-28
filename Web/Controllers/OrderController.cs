@@ -44,5 +44,10 @@ namespace Web.Controllers
 
             return View("receipt",newOrder);
         }
+
+        public ActionResult Details()
+        {
+            return View();
+        }
     }
 }

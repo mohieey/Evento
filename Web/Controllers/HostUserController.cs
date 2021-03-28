@@ -19,19 +19,7 @@ namespace Web.Controllers
 
         public ActionResult Details(string id)
         {
-            HostUserViewModel hosttUser = hostAppService.GetHostById(id);
-            if (User.IsInRole("User"))
-            {
-                if (hosttUser == null)
-                {
-                    return HttpNotFound();
-                }
-            }
-            else
-            {
-                return RedirectToAction("Login", "Account");
-            }
-            return View(hosttUser);
+            return View(hostAppService.GetHostById(id));
         }
 
         public ActionResult Edit(string id)
