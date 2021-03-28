@@ -24,13 +24,6 @@ namespace BL.tests
             hostUserAppService = new HostUserAppService();
             accountAppService = new AccountAppService();
             hostUser = accountAppService.Find("TestHost", "TestHost");
-
-            hostUserViewModel = new HostUserViewModel
-            {
-                ID = hostUser.Id,
-                UserName = "TestHost2",
-            };
-
         }
 
         [OneTimeTearDown]
@@ -63,8 +56,14 @@ namespace BL.tests
        [Test, Category("UpdateHostUser")]
        public void Test_Update_Host_UserName()
         {
+            hostUserViewModel = new HostUserViewModel
+            {
+                ID = hostUser.Id,
+                UserName = "TestHost2",
+            };
+
             hostUserAppService.UpdateHostUser(hostUserViewModel);
-            Assert.That(hostUserViewModel.UserName, Does.Contain("TestHost2"));
+            Assert.That(hostUserViewModel.UserName, Is.EqualTo("TestHost2"));
         }
     }
 }
