@@ -12,6 +12,8 @@ namespace BL.tests
         public EventAppService eventAppService;
         public AccountAppService accountAppService;
         public ApplicationIdentityUser host;
+        public Event Event1 { get; set; }
+        public Event Event2 { get; set; }
 
         [OneTimeSetUp]
         public void EventAppServiceStartup()
@@ -19,13 +21,35 @@ namespace BL.tests
             accountAppService = new AccountAppService();
             eventAppService = new EventAppService();
             host = accountAppService.Find("TestHost", "TestHost");
+
+
+
+            EventViewModel eventViewModel = new EventViewModel();
+            eventViewModel.HostId = host.Id;
+            eventViewModel.Name = "TestEvent1";
+            eventViewModel.location = "Test";
+            eventViewModel.price = 4;
+            eventViewModel.TotalAvailableTickets = 5;
+            eventViewModel.category = 0;
+            eventViewModel.date = DateTime.Now;
+            Event1 = eventAppService.SaveNewEvent(eventViewModel);
+
+
+
+        }
+
+        [OneTimeTearDown]
+        public void EventAppServiceTearDown()
+        {
+            eventAppService.DeleteEvent(Event1);
+            eventAppService.DeleteEvent(Event2);
         }
 
 
         [Test]
         public void GetAllEventsById_Test()
         {
-            int id = 1;
+            int id = Event1.ID;
             int eventId = eventAppService.GetEventById(id).ID;
             Assert.That(eventId, Is.EqualTo(id));
         }
@@ -37,8 +61,8 @@ namespace BL.tests
         public void SaveNewEvent_Test()
         {
             EventViewModel eventViewModel = new EventViewModel();
-            eventViewModel.HostId = accountAppService.Find("TestHost","TestHost").Id;
-            eventViewModel.Name = "TestEvent";
+            eventViewModel.HostId = host.Id;
+            eventViewModel.Name = "TestEvent2";
             eventViewModel.location = "Test";
             eventViewModel.price = 4;
             eventViewModel.TotalAvailableTickets = 5;
@@ -46,8 +70,8 @@ namespace BL.tests
             eventViewModel.date = DateTime.Now;
 
 
-            bool result = eventAppService.SaveNewEvent(eventViewModel);
-            Assert.That(result, Is.EqualTo(true));
+            Event2 = eventAppService.SaveNewEvent(eventViewModel);
+            Assert.That(Event2, Is.Not.Null);
         }
     }
 }

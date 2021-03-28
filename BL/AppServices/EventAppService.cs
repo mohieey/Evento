@@ -55,17 +55,26 @@ namespace BL.AppServices
             return eventViewModel;
         }
 
-        public bool SaveNewEvent(EventViewModel eventViewModel)
+        public Event SaveNewEvent(EventViewModel eventViewModel)
         {
             bool result = false;
             var @event = Mapper.Map<Event>(eventViewModel);
 
-            TheUnitOfWork.Event.InsertEvent(@event);
+            Event e =  TheUnitOfWork.Event.InsertEvent(@event);
             result = TheUnitOfWork.Commit() > new int();
 
-            return result;
+            return e;
         }
 
+
+
+
+
+        public void DeleteEvent(Event @event)
+        {
+            TheUnitOfWork.Event.Delete(@event);
+            TheUnitOfWork.Commit();
+        }
         //public void SaveEventChanges(EventViewModel eventViewModel)
         //{
 
