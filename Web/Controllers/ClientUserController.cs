@@ -25,19 +25,7 @@ namespace Web.Controllers
 
         public ActionResult Details(string id)
         {
-            ClientUserViewModel clientUser = clientAppService.GetClientById(id);
-            if (User.IsInRole("User"))
-            {
-                if (clientUser == null)
-                {
-                    return HttpNotFound();
-                }
-            }
-            else
-            {
-                return RedirectToAction("Login", "Account");
-            }
-            return View(clientUser);
+            return View(clientAppService.GetClientById(id));
         }
 
         public ActionResult Edit(string id)
