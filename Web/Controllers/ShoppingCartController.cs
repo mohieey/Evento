@@ -33,16 +33,22 @@ namespace Web.Controllers
         }
 
 
+        //mohieeeeeeeeeeeeeeee
 
         public ActionResult AddTicket(int eventId)
         {
-            Ticket newTicket = shoppingCartAppService.AddTicketToShoppingCart(eventId, User.Identity.GetUserId()) ;
+            Ticket newTicket = shoppingCartAppService.AddTicketToShoppingCart(eventId, User.Identity.GetUserId());
 
             //ticket.OrderID = 1;
             //ticket.price = 22;
             //shoppingCartAppService.AddTicketToShoppingCart(ticket);
             return RedirectToAction("Index", "Event");
         }
+
+        //public void AddTicket(int eventId)
+        //{
+        //    Ticket newTicket = shoppingCartAppService.AddTicketToShoppingCart(eventId, User.Identity.GetUserId());
+        //}
 
 
 
