@@ -15,8 +15,9 @@ namespace BL.tests
     {
         HostUserAppService hostUserAppService;
         AccountAppService accountAppService;
-        ApplicationIdentityUser hostUser;
         HostUserViewModel hostUserViewModel;
+        private ApplicationIdentityUser hostUser { get; set; }
+        private HostUser hostUserUpdated { get; set; }
 
         [OneTimeSetUp]
         public void HostUserSetUp()
@@ -59,11 +60,11 @@ namespace BL.tests
             hostUserViewModel = new HostUserViewModel
             {
                 ID = hostUser.Id,
-                UserName = "TestHost2",
+                UserName = "TestHostUpdated",
             };
 
-            hostUserAppService.UpdateHostUser(hostUserViewModel);
-            Assert.That(hostUserViewModel.UserName, Is.EqualTo("TestHost2"));
+            hostUserUpdated = hostUserAppService.UpdateHostUser(hostUserViewModel);
+            Assert.That(hostUserUpdated.user.UserName, Is.EqualTo(hostUserViewModel.UserName));
         }
     }
 }

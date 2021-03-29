@@ -44,7 +44,7 @@ namespace BL.AppServices
             return hostUserVM;
         }
 
-        public void UpdateHostUser(HostUserViewModel hostUserVM)
+        public HostUser UpdateHostUser(HostUserViewModel hostUserVM)
         {
             HostUser hostUser = TheUnitOfWork.Host.GetHostById(hostUserVM.ID);
 
@@ -54,6 +54,7 @@ namespace BL.AppServices
             hostUser.user.address = hostUserVM.Address;
 
             TheUnitOfWork.Host.UpdateHostUser(hostUser);
+            return hostUser;
         }
 
     }
