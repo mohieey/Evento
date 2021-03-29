@@ -24,12 +24,6 @@ namespace BL.Configuration
                     c.CreateMap<Event, EventViewModel>().ReverseMap();
                     c.CreateMap<ClientUser, ApplicationIdentityUser>().ReverseMap();
                     c.CreateMap<HostUser, ApplicationIdentityUser>().ReverseMap();
-                   // c.CreateMap<ClientUser, ClientUserViewModel>().ReverseMap();
-
-
-
-                    //map all view models with their respectful models
-
                 });
             Mapper = config.CreateMapper();
         }

@@ -59,12 +59,5 @@ namespace BL.AppServices
 
             TheUnitOfWork.Client.UpdateClientUser(clientUser);
         }
-
-
-        //public void DeleteClientUser(string id)
-        //{
-        //    //TheUnitOfWork.Client.DeleteClient(id);
-        //}
-
     }
 }

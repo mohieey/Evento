@@ -13,9 +13,7 @@ namespace Web.Hubs
     {
         public void NewEvent(EventViewModel e)
         {
-            
             Clients.All.NotifyNewEvent(e);
-
         }
 
         [HubMethodName("AddTicket")]

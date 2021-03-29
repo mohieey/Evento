@@ -30,11 +30,6 @@ namespace BL.Repositories
             return host;
         }
 
-        //public List<HostUser> GetAllHostUser()
-        //{
-        //    return _DbContext.HostUsers.ToList();
-        //}
-
         public HostUser GetHostById(string id)
         {
             HostUser hostUser = _DbContext.HostUsers.SingleOrDefault(c => c.Id == id);

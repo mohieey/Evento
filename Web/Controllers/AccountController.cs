@@ -38,19 +38,7 @@ namespace Web.Controllers
             IdentityResult result = accountAppService.Register(newUser, isHost, User.IsInRole("Admin"));
             if (result.Succeeded)
             {
-                //IAuthenticationManager owinMAnager = HttpContext.GetOwinContext().Authentication;
-
-                //var signinmanager = new SignInManager<ApplicationIdentityUser, string>(
-                //        new ApplicationUserManager(), owinMAnager
-                //        );
-                //ApplicationIdentityUser identityUser = accountAppService.Find(newUser.UserName, newUser.PasswordHash);
-                //signinmanager.SignIn(identityUser, true, true);
-
-                //accountAppService.AssignToRole(identityUser.Id, "Admin");
                 ApplicationIdentityUser registeredUser = accountAppService.Find(newUser.UserName, newUser.PasswordHash);
-
-                //accountAppService.AssignToRole(registeredUser.Id, "User");
-
 
                 if (User.IsInRole("Admin"))
                     accountAppService.AssignToRole(registeredUser.Id, "Admin");

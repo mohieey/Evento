@@ -23,7 +23,6 @@
         <tr>
             <th scope="row">@counter @{counter++;}</th>
             <td>
-                @*@user.user.UserName*@
                 @Html.ActionLink(user.user.UserName, "Details", "ClientUser", new { id = user.Id }, new { @class = "nav-link" })
             </td>
             <td>@user.user.Email</td>

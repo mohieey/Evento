@@ -14,7 +14,6 @@ using Microsoft.AspNet.Identity;
 
 namespace Web.Controllers
 {
-    //[Authorize(Roles = "Admin")]
     public class TicketController : Controller
     {
         TicketAppService ticketAppService = new TicketAppService();
@@ -33,54 +32,16 @@ namespace Web.Controllers
             return View(Ticket);
         }
 
-        //public ActionResult Create() => View();
-
-
-
-
         public ActionResult Create(Event _event)
         {
-            //if (!ModelState.IsValid)
-            //    return View(newTicket);
-
-            //try
-            //{
             if (_event.tickets.Count() == _event.TotalAvailableTickets)
             {
                 return Content("Out Of Stock");
             }
             Ticket ticket = ticketAppService.CreateTicket(_event);
-            //ticket.clientId = User.Identity.GetUserId();
+
             return RedirectToAction("AddTicketToCart", "ShoppingCart", new RouteValueDictionary(ticket));
-
-
-            //catch(Exception ex)
-            //{
-            //    ModelState.AddModelError("", ex.Message);
-            //    return View();
-            //}
-
         }
-
-        //public ActionResult Edit(int id) => View();
-
-        //[HttpPost]
-        //public ActionResult Edit(int id, Ticket updateTicket)
-        //{
-        //    if (!ModelState.IsValid)
-        //        return View(updateTicket);
-        //    try
-        //    {
-
-        //        ticketAppService.UpdateTicket(updateTicket);
-        //        return RedirectToAction("Index");
-        //    }
-        //    catch(Exception ex)
-        //    {
-        //        ModelState.AddModelError("", ex.Message);
-        //        return View();
-        //    }
-        //}
 
         public ActionResult Delete(int id)
         {
@@ -108,14 +69,5 @@ namespace Web.Controllers
                 return View();
             }
         }
-
-        //protected override void Dispose(bool disposing)
-        //{
-        //    if (disposing)
-        //    {
-        //        ticketAppService.Dispose();
-        //    }
-        //    base.Dispose(disposing);
-        //}
     }
 }

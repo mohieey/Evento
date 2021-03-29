@@ -22,39 +22,9 @@ namespace BL.Repositories
 
         public ShoppingCart GetShoppingCartByUserId(string Id)
         {
-            //ClientAccountRepository clientRepo = new ClientAccountRepository(_DbContext);
-            //ClientUser client = clientRepo.GetClientById(Id);
-            //return client.shoppingCart;
-
             return GetWhere(s => s.ClientId == Id)
                 .Include(s => s.ShoppingCartTickets)
                 .FirstOrDefault();
-
         }
-
-        //public Ticket InsertTicket(Ticket ticket)
-        //{
-        //    return Insert(ticket);
-        //}
-
-        //public void UpdateTicket(Ticket ticket)
-        //{
-        //    Update(ticket);
-        //}
-
-        //public void DeleteTicket(int id)
-        //{
-        //    Delete(id);
-        //}
-
-        //public bool CheckTicketExists(Ticket ticket)
-        //{
-        //    return GetAny(t => t.ID == ticket.ID);
-        //}
-
-        //public Ticket GetTicketById(int id)
-        //{
-        //    return GetFirstOrDefault(t => t.ID == id);
-        //}
     }
 }

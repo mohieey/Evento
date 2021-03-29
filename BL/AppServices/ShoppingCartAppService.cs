@@ -30,13 +30,6 @@ namespace BL.AppServices
         public List<Ticket> GetTicketsByUserId(string userId)
         {
             ShoppingCart shoppingCart = GetShoppingCartByUserId(userId);
-
-            //var sctList =  TheUnitOfWork.ShoppingCartTicket
-            //                .GetWhere(sct => sct.shoppingCartId == shoppingCart.ID)
-            //                .Include(sct => sct.ticket)
-            //                .Include(sct=> sct.ticket.Event)
-            //                .ToList();
-
             return TheUnitOfWork.ShoppingCartTicket.getTicketsByShoppingCartId(shoppingCart.ID);
         }
 
@@ -64,27 +57,6 @@ namespace BL.AppServices
         public ShoppingCart Insert(string id)
         {
             ShoppingCart newSC = TheUnitOfWork.ShoppingCart.Insert(new ShoppingCart { ClientId = id });
-
-            //try
-            //{
-                
-            //}
-            //catch (DbEntityValidationException e)
-            //{
-            //    foreach (var eve in e.EntityValidationErrors)
-            //    {
-            //        Console.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
-            //            eve.Entry.Entity.GetType().Name, eve.Entry.State);
-            //        foreach (var ve in eve.ValidationErrors)
-            //        {
-            //            Console.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
-            //                ve.PropertyName, ve.ErrorMessage);
-            //        }
-            //    }
-            //    throw;
-            //}
-
-
             TheUnitOfWork.Commit();
             return newSC;
         }

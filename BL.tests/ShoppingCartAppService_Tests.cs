@@ -9,17 +9,9 @@ using System.Threading.Tasks;
 
 namespace BL.tests
 {
-    //[SetUp]
-    //[OneTimeSetUp]
-    //[TearDown]
-    //[OneTimeTearDown]
-
-
     [TestFixture]
     class ShoppingCartAppService_Tests
     {
-        //
-        //
         public AccountAppService accountAppService;
         public ShoppingCartAppService shoppingCartAppService;
         public ApplicationIdentityUser user;

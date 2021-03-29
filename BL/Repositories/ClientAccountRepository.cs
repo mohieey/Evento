@@ -41,12 +41,6 @@ namespace BL.Repositories
                 }
                 throw;
             }
-
-
-            //ClientUser newClient = _DbContext.ClientUsers.Add(client);
-
-            //_DbContext.SaveChanges();
-
             return newClient;
         }
 

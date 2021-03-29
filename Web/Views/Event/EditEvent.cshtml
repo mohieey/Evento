@@ -22,7 +22,6 @@
                         @Html.HiddenFor(model => model.HostId)
 
                         <div class="form-group">
-                            @*@Html.LabelFor(model => model.HostId, htmlAttributes: new { @class = "control-label col-md-2" })*@
                             <div class="col-md-10">
                                 @Html.EditorFor(model => model.HostId, new { htmlAttributes = new { @class = "form-control" } })
                                 @Html.ValidationMessageFor(model => model.HostId, "", new { @class = "text-danger" })
