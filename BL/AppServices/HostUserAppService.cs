@@ -44,17 +44,17 @@ namespace BL.AppServices
             return hostUserVM;
         }
 
-        public void UpdateHostUser(HostUserViewModel hostUserVM)
+        public HostUser UpdateHostUser(HostUserViewModel hostUserVM)
         {
-            HostUser hostUser = new HostUser();
+            HostUser hostUser = TheUnitOfWork.Host.GetHostById(hostUserVM.ID);
 
-            hostUser.Id = hostUserVM.ID;
             hostUser.user.UserName = hostUserVM.UserName;
             hostUser.user.Email = hostUserVM.Email;
             hostUser.user.age = hostUserVM.Age;
             hostUser.user.address = hostUserVM.Address;
 
             TheUnitOfWork.Host.UpdateHostUser(hostUser);
+            return hostUser;
         }
 
     }
