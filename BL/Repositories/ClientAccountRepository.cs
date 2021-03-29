@@ -57,7 +57,7 @@ namespace BL.Repositories
 
         public ClientUser GetClientById(string id)
         {
-            ClientUser client = _DbContext.ClientUsers.SingleOrDefault(c => c.Id == id);
+            ClientUser client = _DbContext.ClientUsers.Include(c=>c.user).SingleOrDefault(c => c.Id == id);
             return client;
 
         }

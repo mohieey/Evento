@@ -44,13 +44,5 @@ namespace Web.Controllers
             }
             return View(updateClientUser);
         }
-
-
-
-        //public ActionResult Delete(string id)
-        //{
-        //    clientAppService.DeleteClientUser(id);
-        //    return RedirectToAction("Index");
-        //}
     }
 }

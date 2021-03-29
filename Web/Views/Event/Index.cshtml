@@ -165,7 +165,7 @@
             var eventPrice = $(this).parent().parent().find(".eventPrice").html();
             var userId = "@User.Identity.GetUserId()";
 
-console.log("ASDASDASD")
+            console.log("ASDASDASD")
 
             proxy.server.AddTicket(eventName, eventPrice, userId);
         });

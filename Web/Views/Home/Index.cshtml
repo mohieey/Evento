@@ -3,29 +3,38 @@
 }
 
 <div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+    <h1>EVENTO</h1>
+    <p class="lead">Evento is a user friendly, easy to use and free website where you can host your own events or buy tickets for your favourite upcoming event.</p>
+    <p class="lead">Start today.</p>
+    @if (!User.Identity.IsAuthenticated)
+    {
+        <div class="d-flex justify-content-around py-3">
+            <p>
+                @Html.ActionLink("Host Your Own Events!", "Register", "Account", new { isHost = true }, new { @class = "btn btn-secondary btn-lg font-weight-bold" })
+            </p>
+            <p>
+                @Html.ActionLink("Start Booking Now!", "Register", "Account", null, new { @class = "btn btn-info btn-lg font-weight-bold" })
+            </p>
+        </div>
+    }
 </div>
 
 <div class="row">
     <div class="col-md-4">
-        <h2>Getting started</h2>
+        <h1 class="display-4 text-dark" style="text-align:center">1</h1>
+        <h4 style="text-align:center">Enter your event details</h4>
         <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
+            Let attendees know when, where, and what your event is about.
         </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
     </div>
     <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+        <h1 class="display-4 text-dark" style="text-align:center">2</h1>
+        <h4 style="text-align:center">Create your tickets</h4>
+        <p>Set up your free tickets, or create multiple ticket types to maximize your sales.</p>
     </div>
     <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+        <h1 class="display-4 text-dark" style="text-align:center">3</h1>
+        <h4 style="text-align:center">Publish and share</h4>
+        <p>Once your event is live, easily share to sites like Facebook and Instagram to reach more ticket buyers in more places.</p>
     </div>
 </div>
