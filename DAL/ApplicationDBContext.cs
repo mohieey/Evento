@@ -22,7 +22,7 @@ namespace DAL
             }
         }
 
-        public ApplicationDBContext() : base("cs")
+        public ApplicationDBContext() : base("name = cs")
         {
 
         }
