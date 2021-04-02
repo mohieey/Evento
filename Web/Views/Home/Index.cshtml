@@ -1,6 +1,10 @@
-﻿@{
-    ViewBag.Title = "Home Page";
-}
+﻿@{ ViewBag.Title = "Home Page"; }
+
+<div id="NewEventNotification" style="display:none;" class="alert alert-warning fade show">
+    <button type="button" id="close" class="close">&times;</button>
+    A New Event Called <strong id="newEventName"></strong> Has Been Added!
+    @Html.ActionLink("Show Details", "Index", "Event", null, new { @class = "btn btn-info" })
+</div>
 
 <div class="jumbotron">
     <h1>EVENTO</h1>
@@ -8,15 +12,14 @@
     <p class="lead">Start today.</p>
     @if (!User.Identity.IsAuthenticated)
     {
-        <div class="d-flex justify-content-around py-3">
-            <p>
-                @Html.ActionLink("Host Your Own Events!", "Register", "Account", new { isHost = true }, new { @class = "btn btn-secondary btn-lg font-weight-bold" })
-            </p>
-            <p>
-                @Html.ActionLink("Start Booking Now!", "Register", "Account", null, new { @class = "btn btn-info btn-lg font-weight-bold" })
-            </p>
-        </div>
-    }
+<div class="d-flex justify-content-around py-3">
+    <p>
+        @Html.ActionLink("Host Your Own Events!", "Register", "Account", new { isHost = true }, new { @class = "btn btn-secondary btn-lg font-weight-bold" })
+    </p>
+    <p>
+        @Html.ActionLink("Start Booking Now!", "Register", "Account", null, new { @class = "btn btn-info btn-lg font-weight-bold" })
+    </p>
+</div>}
 </div>
 
 <div class="row">
@@ -38,3 +41,35 @@
         <p>Once your event is live, easily share to sites like Facebook and Instagram to reach more ticket buyers in more places.</p>
     </div>
 </div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/Scripts/jquery.signalR-2.4.1.min.js"></script>
+    <script src="~/signalr/js"></script>
+    <script>var proxy = $.connection.newEventHub;
+        $.connection.hub.start().done(
+            function () {
+                console.log("Connected");
+            }
+        );
+
+        var proxy = $.connection.newEventHub;
+        $.connection.hub.start().done(
+            function () {
+                console.log("Connected");
+            }
+        );
+
+        proxy.client.NotifyNewEvent = function (e) {
+
+            $("#newEventName").text(e.Name);
+            $("#NewEventNotification").fadeIn();
+
+
+        }
+
+        $("#close").click(() => {
+            $("#NewEventNotification").fadeOut();
+        })</script>
+}

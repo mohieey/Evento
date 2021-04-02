@@ -3,80 +3,80 @@
 @using DAL;
 @using Microsoft.AspNet.Identity;
 @model IPagedList<BL.ViewModels.EventViewModel>
-@{
-    ViewBag.Title = "Events";
-}
+@{ ViewBag.Title = "Events"; }
 <div id="NewEventNotification" style="display:none;" class="alert alert-warning fade show">
     <button type="button" id="close" class="close">&times;</button>
     A New Event Called <strong id="newEventName"></strong> Has Been Added!
 </div>
+
+<div id="UpdateEventNotification" style="display:none;" class="alert alert-warning fade show">
+    <button type="button" id="closeEventUpdate" class="close">&times;</button>
+    The Event Called <strong id="EventNameUpdated"></strong> Has Been Updated!
+</div>
+
+<div id="BookTicketNotification" style="display:none;" class="alert alert-warning fade show">
+    <button type="button" id="closeTicketAdded" class="close">&times;</button>
+    Ticket of The Event <strong id="TicketAdded"></strong> Added to <strong id="userName"></strong>
+
+</div>
+
 <button data-toggle="collapse" data-target="#demo" class="btn btn-info my-3">Filter</button>
 
 <div id="demo" class="collapse">
 
     @using (Html.BeginForm("Index", "Event", FormMethod.Get))
     {
-        <div class="form-group">
-            @Html.Label("Name")
-            @Html.TextBox("eventName", null, new { @class = "form-control" })
-            <button class="btn btn-outline-dark">Search By Name</button>
-        </div>
-    }
+<div class="form-group">
+    @Html.Label("Name")
+    @Html.TextBox("eventName", null, new { @class = "form-control" })
+    <button class="btn btn-outline-dark">Search By Name</button>
+</div>}
 
 
     @using (Html.BeginForm("Index", "Event", FormMethod.Get))
     {
-        <div class="form-group">
-            @Html.Label("Host Name")
-            @Html.TextBox("hostName", null, new { @class = "form-control" })
-            <button class="btn btn-outline-dark">Search By Host Name</button>
-        </div>
-    }
+<div class="form-group">
+    @Html.Label("Host Name")
+    @Html.TextBox("hostName", null, new { @class = "form-control" })
+    <button class="btn btn-outline-dark">Search By Host Name</button>
+</div>}
 
 
     @using (Html.BeginForm("IndexByCategory", "Event", FormMethod.Get))
     {
 
-        <div class="form-group">
-            @Html.Label("Category")
-            @{
-                var itemsList = new List<SelectListItem>();
-                itemsList.AddRange(Enum.GetValues(typeof(Enum_Category)).Cast<Enum_Category>().Select(
-                (item, index) => new SelectListItem
-                {
-                    Text = item.ToString(),
-                    Value = (index).ToString()
-                }).ToList());
-            }
+<div class="form-group">
+    @Html.Label("Category")
+    @{ var itemsList = new List<SelectListItem>();
+        itemsList.AddRange(Enum.GetValues(typeof(Enum_Category)).Cast<Enum_Category>().Select(
+        (item, index) => new SelectListItem
+        {
+            Text = item.ToString(),
+            Value = (index).ToString()
+        }).ToList()); }
 
-            @Html.DropDownList("category", itemsList, new { @class = "custom-select form-control" })
-            <button class="btn btn-outline-dark">Show By Category</button>
+    @Html.DropDownList("category", itemsList, new { @class = "custom-select form-control" })
+    <button class="btn btn-outline-dark">Show By Category</button>
 
-        </div>
-
-    }
+</div>}
 
     @using (Html.BeginForm("IndexByAge", "Event", FormMethod.Get))
     {
 
-        <div class="form-group">
-            @Html.Label("Age")
-            @{
-                var itemsList = new List<SelectListItem>();
-                itemsList.AddRange(Enum.GetValues(typeof(Enum_Age)).Cast<Enum_Age>().Select(
-                (item, index) => new SelectListItem
-                {
-                    Text = item.ToString(),
-                    Value = (index).ToString()
-                }).ToList());
-            }
+<div class="form-group">
+    @Html.Label("Age")
+    @{ var itemsList = new List<SelectListItem>();
+        itemsList.AddRange(Enum.GetValues(typeof(Enum_Age)).Cast<Enum_Age>().Select(
+        (item, index) => new SelectListItem
+        {
+            Text = item.ToString(),
+            Value = (index).ToString()
+        }).ToList()); }
 
-            @Html.DropDownList("Age", itemsList, new { @class = "custom-select form-control" })
-            <button class="btn btn-outline-dark">Show By Age</button>
+    @Html.DropDownList("Age", itemsList, new { @class = "custom-select form-control" })
+    <button class="btn btn-outline-dark">Show By Age</button>
 
-        </div>
-
-    }
+</div>}
 
 </div>
 
@@ -115,31 +115,26 @@
                     break;
             }
 
-            <div class="card @bgClass table-bordered" style="height: 400px; width: 18rem;">
-                <img class="card-img-top" src="~/Content/@e.image" alt="Event Image" style="max-height:200px">
-                <div class="card-body">
-                    <div class="d-flex justify-content-between">
-                        <h5 class="card-title text-dark font-weight-bold eventName">@e.Name</h5>
-                        <h5 class="card-title text-dark font-weight-bold ml-auto eventPrice">@e.price<span>$</span></h5>
-                    </div>
-                    <p class="card-text text-dark" style="height:80px; overflow-y:auto">@e.description</p>
+<div class="card @bgClass table-bordered" style="height: 400px; width: 18rem;">
+    <img class="card-img-top" src="~/Content/@e.image" alt="Event Image" style="max-height:200px">
+    <div class="card-body">
+        <div class="d-flex justify-content-between">
+            <h5 class="card-title text-dark font-weight-bold eventName">@e.Name</h5>
+            <h5 class="card-title text-dark font-weight-bold ml-auto eventPrice">@e.price<span>$</span></h5>
+        </div>
+        <p class="card-text text-dark" style="height:80px; overflow-y:auto">@e.description</p>
 
-                    <div class="d-flex justify-content-between" style="margin-top:10px">
-                        @if (e.Host != null && e.Host.Id == User.Identity.GetUserId())
-                        {
-                            @Html.ActionLink("Edit", "EditEvent", "Event", e, new { @class = "btn btn-primary" })
-                        }
-                        @if (User.IsInRole("User"))
-                        {
-                            <button class="btn btn-primary btnBookTicket" id="@e.ID">Book ticket</button>
-                            @*@Html.ActionLink("Book ticket", "AddTicket", "ShoppingCart", new { eventId = e.ID }, new { @class = "btn btn-primary btnBookTicket" });*@
-                        }
-                        @Html.ActionLink("Details", "Details", new { id = e.ID }, new { @class = "btn btn-primary ml-auto" })
-                    </div>
-                </div>
-            </div>
-
-        }
+        <div class="d-flex justify-content-between" style="margin-top:10px">
+            @if (e.Host != null && e.Host.Id == User.Identity.GetUserId())
+            {
+@Html.ActionLink("Edit", "EditEvent", "Event", e, new { @class = "btn btn-primary" })}
+            @if (User.IsInRole("User"))
+            {
+<button class="btn btn-primary btnBookTicket" id="@e.ID">Book ticket</button> @*@Html.ActionLink("Book ticket", "AddTicket", "ShoppingCart", new { eventId = e.ID }, new { @class = "btn btn-primary btnBookTicket" });*@}
+            @Html.ActionLink("Details", "Details", new { id = e.ID }, new { @class = "btn btn-primary ml-auto" })
+        </div>
+    </div>
+</div>}
 
 
     </div>
@@ -161,6 +156,7 @@
         $(document).ready(() => {
             $(".btnBookTicket").click(function () {
 
+
                 const eventID = $(this).attr("id");
                 $.ajax({
                         url: '@Url.Action("AddTicket", "ShoppingCart")',
@@ -175,19 +171,19 @@
                 });
 
 
-
-
-
                 @using Microsoft.AspNet.Identity;
                 var eventName = $(this).parent().parent().find(".eventName").html();
                 var eventPrice = $(this).parent().parent().find(".eventPrice").clone().children().remove().end().text();
                 var userId = "@User.Identity.GetUserId()";
-
+                var userName = "@User.Identity.Name";
                 console.log(eventName);
                 console.log(eventPrice);
                 console.log(userId);
 
                 proxy.server.AddTicket(eventName, eventPrice, userId);
+
+                proxy.server.NotifyAddTicket(eventName, userName);
+
             });
         })
 
@@ -214,6 +210,40 @@
 
 
     </script>
+
+
+    <script>
+        var proxy = $.connection.newEventHub;
+        $.connection.hub.start().done(
+            function () {
+                console.log("Connected");
+            }
+        );
+
+        proxy.client.NotifyEventUpdated = function (e) {
+
+            $(".EventNameUpdated").text(e);
+            $("#UpdateEventNotification").fadeIn();
+        }
+
+        $("#closeEventUpdate").click(() => {
+            $("#UpdateEventNotification").fadeOut();
+        })
+
+
+
+        proxy.client.NotifyBookTicket = function (eventName, userName) {
+            $("#TicketAdded").text(eventName);
+            $("#userName").text(userName);
+            $("#BookTicketNotification").fadeIn();
+
+        }
+
+        $("#closeTicketAdded").click(() => {
+            $("#BookTicketNotification").fadeOut();
+        })
+
+    </script>
 }
 
 
@@ -228,10 +258,10 @@
     <li class="page-item"><a class="page-link" href="#">Previous</a></li>
     <li class="page-item">
         @Html.PagedListPager(Model, page => Url.Action("Index", new { page, categoryName = Request.QueryString["categoryName"] }),
-new PagedListRenderOptions()
-{
-LiElementClasses = new List<string> { "page-link active text-white" }
-})
+               new PagedListRenderOptions()
+               {
+                   LiElementClasses = new List<string> { "page-link active text-white" }
+               })
     </li>
 
     <li class="page-item"><a class="page-link" href="#">Next</a></li>

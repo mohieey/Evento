@@ -1,8 +1,6 @@
 ﻿@model BL.ViewModels.EventViewModel
 
-@{
-    ViewBag.Title = "EditEvent";
-}
+@{ ViewBag.Title = "EditEvent"; }
 
 
 <div class="container">
@@ -12,11 +10,11 @@
                 <h2 class="text-center">Edit Event</h2>
                 @using (Html.BeginForm("EditEvent", "Event", FormMethod.Post, new { enctype = "multipart/form-data" }))
                 {
-                    @Html.AntiForgeryToken()
+    @Html.AntiForgeryToken()
 
                     <div class="form-horizontal">
 
-                        
+
                         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                         @Html.HiddenFor(model => model.ID)
                         @Html.HiddenFor(model => model.HostId)
@@ -31,7 +29,7 @@
                         <div class="form-group">
                             @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
                             <div class="col-md-10">
-                                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", Id = "Name" } })
                                 @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
                             </div>
                         </div>
@@ -47,7 +45,7 @@
                         <div class="form-group">
                             @Html.LabelFor(model => model.price, htmlAttributes: new { @class = "control-label col-md-2" })
                             <div class="col-md-10">
-                                @Html.EditorFor(model => model.price, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.EditorFor(model => model.price, new { htmlAttributes = new { @class = "form-control", Id = "Price" } })
                                 @Html.ValidationMessageFor(model => model.price, "", new { @class = "text-danger" })
                             </div>
                         </div>
@@ -72,7 +70,7 @@
                         <div class="form-group">
                             @Html.LabelFor(model => model.description, htmlAttributes: new { @class = "control-label col-md-2" })
                             <div class="col-md-10">
-                                @Html.EditorFor(model => model.description, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.EditorFor(model => model.description, new { htmlAttributes = new { @class = "form-control", Id = "description" } })
                                 @Html.ValidationMessageFor(model => model.description, "", new { @class = "text-danger" })
                             </div>
                         </div>
@@ -86,23 +84,40 @@
                         </div>
                         <hr />
                         <div class="form-group text-center">
-                            <div >
-                                <input type="submit" value="Save" class="btn btn-primary" />
+                            <div>
+                                <input type="submit" value="Save" class="btn btn-primary" id="btnSave" />
                             </div>
                         </div>
-                    </div>
-                }
-                
+                    </div>}
+
                 <div class="text-center">
                     @Html.ActionLink("Back to List", "Index")
                 </div>
             </div>
-            
+
         </div>
     </div>
-</div> 
+</div>
 
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/Scripts/jquery.signalR-2.4.1.min.js"></script>
+    <script src="~/signalr/js"></script>
+    <script>
+        var proxy = $.connection.newEventHub;
+        $.connection.hub.start().done(
+            function () {
+                console.log("Connected");
+
+                $("#btnSave").click(function () {
+
+                    var eventName = $("#Name").val()
+                    proxy.server.UpdateEvent(eventName);
+
+                });
+            }
+        );
+    </script>
 }
+
