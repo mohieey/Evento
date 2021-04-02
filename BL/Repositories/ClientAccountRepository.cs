@@ -3,6 +3,8 @@ using DAL.User;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,18 +21,55 @@ namespace BL.Repositories
         }
 
         public ClientUser AddAsAClient(ClientUser client)
-        {
+        {            
             ClientUser newClient = _DbContext.ClientUsers.Add(client);
-
-            _DbContext.SaveChanges();
-
+            try
+            {
+                _DbContext.SaveChanges();
+            }
+            catch (DbEntityValidationException e)
+            {
+                foreach (var eve in e.EntityValidationErrors)
+                {
+                    Console.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
+                        eve.Entry.Entity.GetType().Name, eve.Entry.State);
+                    foreach (var ve in eve.ValidationErrors)
+                    {
+                        Console.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
+                            ve.PropertyName, ve.ErrorMessage);
+                    }
+                }
+                throw;
+            }
             return newClient;
+        }
+
+        public List<ClientUser> GetAllClientUser()
+        {
+            return _DbContext.ClientUsers.ToList();
         }
 
         public ClientUser GetClientById(string id)
         {
-            //return _DbContext.ClientUsers.Include(c=>c.shoppingCart).SingleOrDefault(c=>c.Id==id);
-            return _DbContext.ClientUsers.SingleOrDefault(c=>c.Id==id);
+            ClientUser client = _DbContext.ClientUsers.Include(c=>c.user).SingleOrDefault(c => c.Id == id);
+            return client;
+
+        }
+
+        public void UpdateClientUser(ClientUser clientUser)
+        {
+            DbEntityEntry dbEntityEntry = _DbContext.Entry(clientUser);
+            if (dbEntityEntry.State == EntityState.Detached)
+            {
+                _DbContext.ClientUsers.Attach(clientUser);
+            }
+            dbEntityEntry.State = EntityState.Modified;
+            _DbContext.SaveChanges();
+        }
+
+        public List<ClientUser> GetAllClients()
+        {
+            return _DbContext.ClientUsers.Include(c=>c.orders).Include(c=>c.user).ToList();
         }
     }
 }

@@ -1,24 +1,92 @@
-﻿@model List<DAL.ShoppingCartTicket>
+﻿@using DAL;
+@model List<DAL.ShoppingCartTicket>
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>My Cart</h2>
+<h2 class="text-center">My Cart</h2>
 <div class="container">
-    @{int totalPrice = 0; }
-    @{ foreach (var sct in Model)
-        {
+    <div id="main">
+        @{int totalPrice = 0; }
+        @{ foreach (var sct in Model)
+            {
+                string bgClass = string.Empty;
+                switch (sct.ticket.Event.category)
+                {
+                    case Enum_Category.Comedy:
+                        bgClass = "bg-warning";
+                        break;
+                    case Enum_Category.Sports:
+                        bgClass = "bg-success";
+                        break;
+                    case Enum_Category.Musical:
+                        bgClass = "bg-info";
+                        break;
+                    case Enum_Category.Cultural:
+                        bgClass = "bg-warning";
+                        break;
+                    case Enum_Category.Educational:
+                        bgClass = "bg-secondary";
+                        break;
+                    case Enum_Category.Kids:
+                        bgClass = "bg-warning";
+                        break;
+                    case Enum_Category.Tech:
+                        bgClass = "bg-dark";
+                        break;
+                    default:
+                        // code block
+                        break;
+                }
 
-            <div class="alert alert-success alert-dismissible">
-                <button type="button" class="close" data-dismiss="alert">&times;</button>
-                @sct.ticket.Event.Name for <strong>@sct.ticket.Event.price</strong>
-            </div>
-
-            totalPrice += @sct.ticket.Event.price;
+                <div class="alert @bgClass alert-success alert-dismissible">
+                    <div class="row">
+                        <div class="col">@sct.ticket.Event.Name</div>
+                        <div class="col text-right"><strong class="text-right">@sct.ticket.Event.price L.E.</strong></div>
+                    </div>
+                </div>
+                totalPrice += @sct.ticket.Event.price;
+            }
         }
+    </div>
+    <p class="display-4" style="font-size:35px;">Total = <span id="total">@totalPrice</span> L.E.</p>
+    @if (!(Model.Count() == 0))
+    {
+        @Html.ActionLink("Check Out", "Create", "Order", new { totalPrice = totalPrice }, new { @class = "btn btn-secondary " })
+
     }
-    <p class="display-4" style="font-size:35px;">Total = @totalPrice </p>
-    @Html.ActionLink("Check Out", "Create", "Order", new { totalPrice = totalPrice }, new { @class = "btn btn-secondary " })
 
 </div>
+
+@section scripts{
+    <script src="~/Scripts/jquery.signalR-2.4.1.min.js"></script>
+    <script src="~/signalr/js"></script>
+    <script>
+        var proxy = $.connection.newEventHub;
+        $.connection.hub.start().done(
+            function () {
+                console.log("Connected");
+            }
+        );
+
+        proxy.client.AddOrder = function (eventName, eventPrice, userId) {
+            @using Microsoft.AspNet.Identity;
+            if ("@User.Identity.GetUserId()" == userId) {
+                $("#main").append(
+                `
+                        <div class="alert bg-success alert-success alert-dismissible">
+                            <div class="row">
+                                <div class="col">${eventName}</div>
+                                <div class="col text-right"><strong class="text-right">${eventPrice} L.E.</strong></div>
+                                </div>
+                            </div>
+                        `
+                );
+                let total = parseInt($("#total").text());
+                total += parseInt(eventPrice);
+                $("#total").html(total);
+            }
+            }
+    </script>
+}
 

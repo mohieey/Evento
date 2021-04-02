@@ -22,8 +22,7 @@ namespace DAL
             }
         }
 
-        public ApplicationDBContext() :
-            base("Data Source =.; Initial Catalog = Evento; Integrated Security = True")
+        public ApplicationDBContext() : base("name = cs")
         {
 
         }

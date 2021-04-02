@@ -13,6 +13,11 @@ namespace BL.AppServices
 {
     public class OrderAppService : BaseAppService
     {
+        public List<Order> GetOrders()
+        {
+            return TheUnitOfWork.Order.GetAllOrders();
+        }
+
         public List<OrderViewModel> GetAllOrder()
         {
             return Mapper.Map<List<OrderViewModel>>(TheUnitOfWork.Order.GetAllOrders());
@@ -25,8 +30,6 @@ namespace BL.AppServices
 
         public Order InsertOrder(string userId, int totalPrice)
         {
-            //ClientAccountRepository clientRepo = new ClientAccountRepository(ApplicationDBContext.applicationDBContext);
-            //ClientUser client = clientRepo.GetClientById(id);
             Order newOrder = new Order { clientId = userId, totalPrice = totalPrice };
 
             TheUnitOfWork.Order.Insert(newOrder);
@@ -56,36 +59,5 @@ namespace BL.AppServices
 
             return newOrder;
         }
-
-        //public List<OrderViewModel> GetOrdersByClientId(string id)
-        //{
-        //    TheUnitOfWork.Order.
-        //    return Mapper.Map<OrderViewModel>(TheUnitOfWork.Order.GetOrdersByClientId(id));
-        //}
-
-        //public bool SaveNewOrder(OrderViewModel orderViewModel)
-        //{
-        //    bool result = false;
-        //    var order = Mapper.Map<Order>(orderViewModel);
-        //    if (TheUnitOfWork.Order.Insert(order))
-        //    {
-        //        result = TheUnitOfWork.Commit() > new int();
-        //    }
-        //    return result;
-        //}
-
-
-        //public bool CheckOutOrder(int id)
-        //{
-        //    bool result = false;
-
-        //    TheUnitOfWork.Order.Delete(id);
-        //    result = TheUnitOfWork.Commit() > new int();
-
-        //    return result;
-        //}
-
-        //GetOrderPice
-        //GetNumberOfTicketsInOrder
     }
 }

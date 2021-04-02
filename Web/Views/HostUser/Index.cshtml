@@ -1,0 +1,28 @@
+﻿@model List<BL.ViewModels.HostUserViewModel>
+
+<table class="table table-dark">
+    <thead>
+        <tr>
+            <td><b>User Name</b></td>
+            <td><b>Email</b></td>
+            <td><b>Age</b></td>
+            <td><b>Address</b></td>
+        </tr>
+    </thead>
+    @foreach (var hostUser in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(model => hostUser.UserName)</td>
+            <td>@Html.DisplayFor(model => hostUser.Email)</td>
+            <td>@Html.DisplayFor(model => hostUser.Age)</td>
+            <td>@Html.DisplayFor(model => hostUser.Address)</td>
+
+            <td>
+                @Html.ActionLink("Details", "Details", new { id = hostUser.ID })
+            </td>
+        </tr>
+    }
+
+</table>
+
+

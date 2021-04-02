@@ -1,186 +1,93 @@
-﻿<div class="container">
-    @*<nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#">Navbar</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        @Html.ActionLink("Home", "Index", "Home", null, new { @class = "nav-link" })
-                    </li>
-                    <li class="nav-item">
-                        @Html.ActionLink("About", "About", "Home", null, new { @class = "nav-link" })
-                    </li>
-                    <li class="nav-item">
-                        @Html.ActionLink("Contact", "Contact", "Home", null, new { @class = "nav-link" })
-                    </li>
-                    @if (User.IsInRole("Admin"))
-                    {
-                        <li>@Html.ActionLink("Add Admin", "AddAdmin", "Account", null, new { @class = "nav-link" })</li>
-                    }
-                    @if (User.IsInRole("Host"))
-                    {
-                        <li>@Html.ActionLink("Create Event", "CreateEvent", "Event", null, new { @class = "nav-link" })</li>
+﻿@using Microsoft.AspNet.Identity;
 
-                    }
-                    else if (User.IsInRole("User"))
-                    {
-                        <li>User</li>
-                    }
-                    @if (User.Identity.IsAuthenticated)
-                    {
-                        <li>@Html.ActionLink("Logout", "Logout", "Account", null, new { @class = "nav-link" })</li>
-                    }
-
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Dropdown link
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <a class="dropdown-item" href="#">Something else here</a>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </nav>*@
+<div class="container">
 
 
-
-    @*<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand" href="#">Navbar</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarColor02">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        @Html.ActionLink("Home", "Index", "Home", null, new { @class = "nav-link" })
-                    </li>
-                    <li class="nav-item">
-                        @Html.ActionLink("About", "About", "Home", null, new { @class = "nav-link" })
-                    </li>
-                    <li class="nav-item">
-                        @Html.ActionLink("Contact", "Contact", "Home", null, new { @class = "nav-link" })
-                    </li>
-                    @if (User.IsInRole("Admin"))
-                    {
-                        <li>@Html.ActionLink("Add Admin", "AddAdmin", "Account", null, new { @class = "nav-link" })</li>
-                    }
-                    @if (User.IsInRole("Host"))
-                    {
-                        <li>@Html.ActionLink("Create Event", "CreateEvent", "Event", null, new { @class = "nav-link" })</li>
-
-                    }
-                    else if (User.IsInRole("User"))
-                    {
-                        <li>User</li>
-                    }
-                    @if (User.Identity.IsAuthenticated)
-                    {
-                        <li>@Html.ActionLink("Logout", "Logout", "Account", null, new { @class = "nav-link" })</li>
-                    }
-
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Dropdown link
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <a class="dropdown-item" href="#">Something else here</a>
-                        </div>
-                    </li>
-                </ul>
-                <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="text" placeholder="Search">
-                    <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-                </form>
-            </div>
-        </nav>*@
-
-
-
-
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <a class="navbar-brand font-weight-bold" href="#">Evento</a>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-danger">
+        <a class="navbar-brand" href="#">
+            <span class="font-weight-bold" style="font-size:30px">Evento</span>
+        </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav w-100">
                 <li class="nav-item">
-                    @Html.ActionLink("Home", "Index", "Home", null, new { @class = "nav-link" })
+                    @Html.ActionLink("Home", "Index", "Home", null, new { @class = "nav-link font-weight-bold" })
                 </li>
                 <li class="nav-item">
-                    @Html.ActionLink("About", "About", "Home", null, new { @class = "nav-link" })
+                    @Html.ActionLink("About", "About", "Home", null, new { @class = "nav-link font-weight-bold" })
                 </li>
                 <li class="nav-item">
-                    @Html.ActionLink("Contact", "Contact", "Home", null, new { @class = "nav-link" })
+                    @Html.ActionLink("Contact", "Contact", "Home", null, new { @class = "nav-link font-weight-bold" })
                 </li>
                 @if (User.IsInRole("Admin"))
                 {
-                    <li>@Html.ActionLink("Add Admin", "AddAdmin", "Account", null, new { @class = "nav-link text-warning" })</li>
+                    <li>@Html.ActionLink("Add Admin", "AddAdmin", "Account", null, new { @class = "nav-link text-warning font-weight-bold" })</li>
+                }
+                @if (User.IsInRole("Admin"))
+                {
+                    <li>@Html.ActionLink("Dashboard", "Clients", "Admin", null, new { @class = "nav-link font-weight-bold btn btn-primary active" })</li>
                 }
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle font-weight-bold" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Events
                     </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        @Html.ActionLink("Show Events", "Index", "Event", null, new { @class = "dropdown-item" })
+                    <div class="dropdown-menu py-0" aria-labelledby="navbarDropdownMenuLink">
+                        @Html.ActionLink("Show Events", "Index", "Event", null, new { @class = "dropdown-item font-weight-bold" })
                         @if (User.IsInRole("Host"))
                         {
-                            @Html.ActionLink("Create Event", "CreateEvent", "Event", null, new { @class = "dropdown-item" })
+                            @Html.ActionLink("Create Event", "CreateEvent", "Event", null, new { @class = "dropdown-item font-weight-bold" })
 
                         }
                     </div>
                 </li>
 
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Dropdown link
+                @if (User.IsInRole("User"))
+                {
+                    <a href=@Url.Action("Index", "ShoppingCart") type="button" class="btn btn-primary font-weight-bold">
+                        My Cart <span class="badge badge-light">
+                            @{
+                                BL.AppServices.ShoppingCartAppService shoppingcartservice = new BL.AppServices.ShoppingCartAppService();
+                                var counter = shoppingcartservice.GetShoppingCartTicketsByUserId(User.Identity.GetUserId()).Count();
+                            }
+                            @counter
+                        </span>
                     </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
-                </li>
-
+                }
                 @if (!User.Identity.IsAuthenticated)
                 {
                     <li class="nav-item ml-auto">
-                        @Html.ActionLink("Become a host", "Register", "Account", new { isHost = true }, new { @class = "nav-link" })
+                        @Html.ActionLink("Login", "Login", "Account", null, new { @class = "nav-link font-weight-bold" })
                     </li>
                 }
 
-                    @if (User.Identity.IsAuthenticated)
-                    {
-                        <li class="nav-item ml-auto">
-                            @Html.ActionLink("Logout", "Logout", "Account", null, new { @class = "nav-link" })
-                        </li>
-                    }
-                    @if (!User.Identity.IsAuthenticated)
-                    {
-                        <li class="nav-item ml-auto">
-                            @Html.ActionLink("Register", "Register", "Account", null, new { @class = "nav-link" })
-                        </li>
-
-                    }
-                    @if (!User.Identity.IsAuthenticated)
-                    {
-                        <li class="nav-item align-self-end">
-                            @Html.ActionLink("Login", "Login", "Account", null, new { @class = "nav-link" })
-                        </li>
-                    }
-                </ul>
-            @*<form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="text" placeholder="Search">
-                    <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-                </form>*@
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <li class="nav-item dropdown ml-auto">
+                        <a class="nav-link dropdown-toggle font-weight-bold" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            @{
+                                BL.AppServices.AccountAppService accountcartservice = new BL.AppServices.AccountAppService();
+                                var userName = accountcartservice.GetUserById(User.Identity.GetUserId()).UserName;
+                            }
+                            @userName
+                        </a>
+                        <div class="dropdown-menu py-0 dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                            @if (User.IsInRole("User"))
+                            {
+                                @Html.ActionLink("View Profile", "Details", "ClientUser", new { id = User.Identity.GetUserId() }, new { @class = "nav-link text-dark font-weight-bold" })
+                                @Html.ActionLink("Edit Profile", "Edit", "ClientUser", new { id = User.Identity.GetUserId() }, new { @class = "nav-link text-dark font-weight-bold" })
+                            }
+                            else if (User.IsInRole("Host"))
+                            {
+                                @Html.ActionLink("View Profile", "Details", "HostUser", new { id = User.Identity.GetUserId() }, new { @class = "nav-link text-dark font-weight-bold" })
+                                @Html.ActionLink("Edit Profile", "Edit", "HostUser", new { id = User.Identity.GetUserId() }, new { @class = "nav-link text-dark font-weight-bold" })
+                            }
+                            @Html.ActionLink("Logout", "Logout", "Account", null, new { @class = "nav-link text-light font-weight-bold bg-danger" })
+                        </div>
+                    </li>
+                }
+            </ul>
         </div>
     </nav>
 

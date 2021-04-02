@@ -79,7 +79,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppServices\AccountAppService.cs" />
+    <Compile Include="AppServices\ClientUserAppService.cs" />
     <Compile Include="AppServices\EventAppService.cs" />
+    <Compile Include="AppServices\HostUserAppService.cs" />
     <Compile Include="AppServices\OrderAppService.cs" />
     <Compile Include="AppServices\RoleAppService.cs" />
     <Compile Include="AppServices\ShoppingCartAppService.cs" />
@@ -101,7 +103,9 @@
     <Compile Include="Repositories\ShoppingCartRepository.cs" />
     <Compile Include="Repositories\ShoppingCartTicketsRepository.cs" />
     <Compile Include="Repositories\TicketRepository.cs" />
+    <Compile Include="ViewModels\ClientUserViewModel.cs" />
     <Compile Include="ViewModels\EventViewModel.cs" />
+    <Compile Include="ViewModels\HostUserViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\OrderViewModel.cs" />
     <Compile Include="ViewModels\RegisterViewModel.cs" />

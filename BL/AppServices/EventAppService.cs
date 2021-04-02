@@ -22,18 +22,6 @@ namespace BL.AppServices
             return Mapper.Map<EventViewModel>(TheUnitOfWork.Event.GetEventById(id));
         }
 
-        //public EventViewModel CreateEvent(EventViewModel eventViewModel)
-        //{
-        //    Event newEvent = Mapper.Map<Event>(eventViewModel);
-        //    return Mapper.Map<EventViewModel>(TheUnitOfWork.Event.InsertEvent(newEvent));
-        //}
-
-        //public List<OrderViewModel> GetOrdersByClientId(string id)
-        //{
-        //    TheUnitOfWork.Order.
-        //    return Mapper.Map<OrderViewModel>(TheUnitOfWork.Order.GetOrdersByClientId(id));
-        //}
-
         public EventViewModel EditEvent(EventViewModel eventViewModel)
         {
             var @event = TheUnitOfWork.Event.GetEventById(eventViewModel.ID);
@@ -55,44 +43,25 @@ namespace BL.AppServices
             return eventViewModel;
         }
 
-        public bool SaveNewEvent(EventViewModel eventViewModel)
+        public Event SaveNewEvent(EventViewModel eventViewModel)
         {
             bool result = false;
             var @event = Mapper.Map<Event>(eventViewModel);
 
-            TheUnitOfWork.Event.InsertEvent(@event);
+            Event e =  TheUnitOfWork.Event.InsertEvent(@event);
             result = TheUnitOfWork.Commit() > new int();
 
-            return result;
+            return e;
         }
 
-        //public void SaveEventChanges(EventViewModel eventViewModel)
-        //{
-
-        //    var @event = TheUnitOfWork.Event.GetEventById(eventViewModel.ID);
-        //    @event.Name = eventViewModel.Name;
-        //    @event.location = eventViewModel.location;
-        //    @event.TotalAvailableTickets = eventViewModel.TotalAvailableTickets;
-        //    @event.description = eventViewModel.description;
-        //    @event.age = eventViewModel.age;
-        //    @event.category = eventViewModel.category;
-        //    @event.isCanceled = eventViewModel.isCanceled;
-
-        //    TheUnitOfWork.Commit();
-        //}
 
 
-        //public bool CheckOutOrder(int id)
-        //{
-        //    bool result = false;
 
-        //    TheUnitOfWork.Order.Delete(id);
-        //    result = TheUnitOfWork.Commit() > new int();
 
-        //    return result;
-        //}
-
-        //GetOrderPice
-        //GetNumberOfTicketsInOrder
+        public void DeleteEvent(Event @event)
+        {
+            TheUnitOfWork.Event.Delete(@event);
+            TheUnitOfWork.Commit();
+        }
     }
 }

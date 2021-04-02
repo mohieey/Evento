@@ -29,20 +29,12 @@ namespace Web.Controllers
 
             orderAppService.TransferTicketsToOrder(newOrder, ticketList);
 
-            /*
-             * user clicks on check out
-             * redirects here
-             * get total price from view
-             * call orderAppService function to transfer all tickets from current user's shopping cart to his order list
-             * clear shopping cart tickets
-             */
+            return View("receipt",newOrder);
+        }
 
-
-            /*
-             * edit, details user
-             */
-
-            return Content("asdvasjdva df");
+        public ActionResult Details()
+        {
+            return View();
         }
     }
 }

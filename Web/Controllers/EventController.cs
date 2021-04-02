@@ -31,9 +31,6 @@ namespace Web.Controllers
             return View(eventAppService.GetAllEvents().ToPagedList(page ?? 1, 9));
         }
 
-
-
-
         public ActionResult IndexByHostName(string hostName, int? page)
         {
             if (!(hostName is null))
@@ -44,11 +41,6 @@ namespace Web.Controllers
 
             return View(eventAppService.GetAllEvents().ToPagedList(page ?? 1, 9));
         }
-
-
-
-
-
 
         public ActionResult IndexByCategory(Enum_Category? Category, int? page)
         {
@@ -61,8 +53,6 @@ namespace Web.Controllers
             return View("Index", eventAppService.GetAllEvents().Where(e => e.category == Category).ToPagedList(page ?? 1, 9));
         }
 
-
-
         public ActionResult IndexByAge(Enum_Age? Age, int? page)
         {
             if (Age is null)
@@ -73,7 +63,6 @@ namespace Web.Controllers
 
             return View("Index", eventAppService.GetAllEvents().Where(e => e.age == Age).ToPagedList(page ?? 1, 9));
         }
-
 
         [Authorize(Roles = "Host")]
         public ActionResult CreateEvent() => View();
@@ -135,17 +124,6 @@ namespace Web.Controllers
                 return View(editEvent);
             }
         }
-
-
-        //[Authorize(Roles = "Host")]
-        //public ActionResult SaveChanges(EventViewModel editEvent)
-        //{
-            
-        //    eventAppService.SaveEventChanges(editEvent);
-   
-        //    return RedirectToAction("Index");
-        //}
-
 
         [Authorize]
         public ActionResult Details(int id)

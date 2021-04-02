@@ -49,10 +49,19 @@ namespace BL.AppServices
             return TheUnitOfWork.Account.GetUserById(id);
         }
 
-
         public ClientUser GetClientByUserId(string Id)
         {
             return TheUnitOfWork.Client.GetClientById(Id);
+        }
+
+        public List<ClientUser> GetAllClients()
+        {
+            return TheUnitOfWork.Client.GetAllClients();
+        }
+
+        public List<HostUser> GetAllHosts()
+        {
+            return TheUnitOfWork.Host.GetAllHosts();
         }
     }
 }

@@ -1,0 +1,37 @@
+﻿@model DAL.Order
+@using Microsoft.AspNet.Identity;
+@using DAL.User;
+@{
+    ViewBag.Title = "receipt";
+    BL.AppServices.AccountAppService accountAppService = new BL.AppServices.AccountAppService();
+    ClientUser client = accountAppService.GetClientByUserId(User.Identity.GetUserId());
+}
+
+<div class="container my-5">
+    <div class="row">
+        <div class="col-3"></div>
+        <div class="col-6">
+            <div class="card bg-light text-dark">
+                <h4 class="text-center card-header">Order Placed!</h4>
+                <div class="card-body">
+                    <h6 class="d-inline">Client Name: </h6>&nbsp;<strong>@client.user.UserName</strong>
+                    <hr />
+                    <h6 class="d-inline">Client Email: </h6>&nbsp;<strong>@client.user.Email</strong>
+                    <hr />
+                    <h6 class="d-inline">Client Address: </h6>&nbsp;<strong>@client.user.address</strong>
+                    <hr />
+                    <h6 class="d-inline">Order Number: </h6>&nbsp;<strong>@Model.ID</strong>
+                    <hr />
+                    <h6 class="d-inline">Order Total Tickets: </h6>&nbsp;<strong>@Model.OrderTickets.Count()</strong>
+                    <hr />
+                    <h6 class="d-inline">Order Total Price: </h6>&nbsp;<strong>@Model.totalPrice L.E.</strong>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-3"></div>
+
+    </div>
+
+</div>
+
