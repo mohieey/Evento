@@ -28,10 +28,11 @@ namespace Web.Controllers
             return View();
         }
 
-        public ActionResult AddTicket(int eventId)
+        [HttpPost]
+        public void AddTicket(int eventId)
         {
             Ticket newTicket = shoppingCartAppService.AddTicketToShoppingCart(eventId, User.Identity.GetUserId());
-            return RedirectToAction("Index", "Event");
+            //return RedirectToAction("Index", "Event");
         }
     }
 }

@@ -19,7 +19,7 @@ namespace Web.Hubs
         [HubMethodName("AddTicket")]
         public void AddTicket(string eventName, int eventPrice, string userId)
         {
-            Clients.All.AddTicket(eventName, eventPrice, userId);
+            Clients.All.AddOrder(eventName, eventPrice, userId);
         }
     }
 }

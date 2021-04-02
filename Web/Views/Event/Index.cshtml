@@ -120,7 +120,7 @@
                 <div class="card-body">
                     <div class="d-flex justify-content-between">
                         <h5 class="card-title text-dark font-weight-bold eventName">@e.Name</h5>
-                        <h5 class="card-title text-dark font-weight-bold ml-auto eventPrice">@e.price$</h5>
+                        <h5 class="card-title text-dark font-weight-bold ml-auto eventPrice">@e.price<span>$</span></h5>
                     </div>
                     <p class="card-text text-dark" style="height:80px; overflow-y:auto">@e.description</p>
 
@@ -131,7 +131,8 @@
                         }
                         @if (User.IsInRole("User"))
                         {
-                            @Html.ActionLink("Book ticket", "AddTicket", "ShoppingCart", new { eventId = e.ID }, new { @class = "btn btn-primary btnBookTicket" });
+                            <button class="btn btn-primary btnBookTicket" id="@e.ID">Book ticket</button>
+                            @*@Html.ActionLink("Book ticket", "AddTicket", "ShoppingCart", new { eventId = e.ID }, new { @class = "btn btn-primary btnBookTicket" });*@
                         }
                         @Html.ActionLink("Details", "Details", new { id = e.ID }, new { @class = "btn btn-primary ml-auto" })
                     </div>
@@ -156,17 +157,40 @@
                 console.log("Connected");
             }
         );
-        $(".btnBookTicket").click(function () {
 
-            @using Microsoft.AspNet.Identity;
-            var eventName = $(this).parent().parent().find(".eventName").html();
-            var eventPrice = $(this).parent().parent().find(".eventPrice").html();
-            var userId = "@User.Identity.GetUserId()";
+        $(document).ready(() => {
+            $(".btnBookTicket").click(function () {
 
-            console.log("ASDASDASD")
+                const eventID = $(this).attr("id");
+                $.ajax({
+                        url: '@Url.Action("AddTicket", "ShoppingCart")',
+                        type: 'POST',
+                        data: { eventId : eventID },
+                        success: function (res) {
+                            console.log("success");
+                        },
+                        error: () => {
+                        console.log("error")
+                        }
+                });
 
-            proxy.server.AddTicket(eventName, eventPrice, userId);
-        });
+
+
+
+
+                @using Microsoft.AspNet.Identity;
+                var eventName = $(this).parent().parent().find(".eventName").html();
+                var eventPrice = $(this).parent().parent().find(".eventPrice").clone().children().remove().end().text();
+                var userId = "@User.Identity.GetUserId()";
+
+                console.log(eventName);
+                console.log(eventPrice);
+                console.log(userId);
+
+                proxy.server.AddTicket(eventName, eventPrice, userId);
+            });
+        })
+
     </script>
     <script>
         var proxy = $.connection.newEventHub;
@@ -187,6 +211,8 @@
         $("#close").click(() => {
             $("#NewEventNotification").fadeOut();
         })
+
+
     </script>
 }
 
